@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="flex items-center flex-1">
                   <div class="flex-1">
                       <h4 class="font-medium">${item.name}</h4>
-                      <div class="text-sm text-gray-500">$${item.price.toFixed(
+                      <div class="text-sm text-gray-500">₱${item.price.toFixed(
                         2
                       )} × ${item.quantity}</div>
                   </div>
@@ -78,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
       checkoutItem.innerHTML = `
               <div>
                   <h4 class="font-medium">${item.name}</h4>
-                  <div class="text-sm text-gray-500">$${item.price.toFixed(
+                  <div class="text-sm text-gray-500">₱${item.price.toFixed(
                     2
                   )} × ${item.quantity}</div>
               </div>
-              <div class="font-medium">$${(item.price * item.quantity).toFixed(
+              <div class="font-medium">₱${(item.price * item.quantity).toFixed(
                 2
               )}</div>
           `;
