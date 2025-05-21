@@ -463,7 +463,7 @@ image-rendering: optimizeQuality;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #e52e71;
+  color: black;
   margin-bottom: 1rem;
   display: inline-block;
 }
@@ -545,12 +545,12 @@ image-rendering: optimizeQuality;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: perspective(1000px) rotateY(-10deg);
+  transform: perspective(1500px) rotateY(-10deg);
   transition: transform 0.5s ease;
 }
 
 .image-wrapper:hover {
-  transform: perspective(1000px) rotateY(0deg);
+  transform: perspective(1000px) rotateY(10deg);
 }
 
 .about-image img {
@@ -782,15 +782,9 @@ image-rendering: optimizeQuality;
 }
 
 .specials-dish-right {
-    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof-spagetti-cropped.jpg);
+    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof-spagetti-2.jpg);
 }
-.dish3 {
-   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/chicken-shawama.jpg);
-   background-position: center;
-   background-size: cover;
-}
-
-.specials button a {
+pecials button a {
   text-decoration: none;
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -859,17 +853,6 @@ image-rendering: optimizeQuality;
 }
 .dish2 .specials-dish-right p {
   font-size: 0.5em;
-}
-.dish3 {
-  min-height: 300px;
-  margin-bottom: 20px;
-}
-.dish3 .specials-dish h2 {
-  font-size: 1.3em;
-}
-.specials .dish3 .specials-dish p {
-  font-size: 0.4em;
-
 }
 }
 /* Special ends */
