@@ -782,7 +782,7 @@ image-rendering: optimizeQuality;
 }
 
 .specials-dish-right {
-    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof-spagetti-2.jpg);
+    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof-spagetti.jpg);
 }
 .specials button a {
   text-decoration: none;
