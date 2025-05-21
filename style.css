@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: cursive, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 .sidebar {
   position: fixed;
@@ -348,7 +348,7 @@ ul {
   justify-self: center;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../Ann/hero-hero.jpg);
+  background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/hero-hero.jpg);
   background-position: center;
   background-size: cover;
   filter: brightness(1.1);
@@ -406,7 +406,7 @@ image-rendering: optimizeQuality;
     border-radius: 0 0 0 0;
     box-shadow: none;
     width: 100%;
-    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../Ann/fried-rice-and-stewbeef.jpg);
+    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/fried-rice-and-stewbeef.jpg);
   }
   .hero-img img {
   max-width: 200px;
@@ -642,7 +642,7 @@ image-rendering: optimizeQuality;
 }
 .specials {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #d7b2b2 0%, #ffffff 100%);
+  background: transparent;
   color: white;
   text-align: center;
   border-radius: 20px;
@@ -773,19 +773,19 @@ image-rendering: optimizeQuality;
   color: rgba(250, 250, 250, 0.8);
 }
 .dish1 {
-   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../Ann/jollof.jpg);
+   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof.jpg);
    background-position: center;
    background-size: cover;
 }
 .specials-dish-left {
-   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../Ann/egusi-soup-3.jpg);
+   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/egusi-soup-3.jpg);
 }
 
 .specials-dish-right {
-    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../Ann/jollof-spagetti-cropped.jpg);
+    background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/jollof-spagetti-cropped.jpg);
 }
 .dish3 {
-   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(../images/chicken-shawama.jpg);
+   background: linear-gradient(to right, rgb(0 0 0 / .8), rgb(0 0 0 / 0)), url(./images/chicken-shawama.jpg);
    background-position: center;
    background-size: cover;
 }
