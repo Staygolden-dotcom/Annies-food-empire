@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annie's Food Empire</title>
+  <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+ <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+      tailwind.config = {
+    theme: {
+    extend: {
+    colors: {
+    primary: '#FF6B35',
+    secondary: '#2EC4B6'
+    },
+    borderRadius: {
+    'none': '0px',
+    'sm': '4px',
+    DEFAULT: '8px',
+    'md': '12px',
+    'lg': '16px',
+    'xl': '20px',
+    '2xl': '24px',
+    '3xl': '32px',
+    'full': '9999px',
+    'button': '8px'
+    },
+    fontFamily: {
+    'poppins': ['Poppins', 'sans-serif']
+    }
+    }
+    }
+    }
+</script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar" >
+   
+    <!-- Desktop Navigation -->
+      <nav class="desktop-nav w-full bg-white shadow-sm fixed top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <span class="text-3xl font-['Pacifico'] text-primary"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Annie's <br/><span class="food-pulse" style="color: black; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">food</span>Empire</span>
+      <!-- Desktop Navigation Links -->
+          <div class="hidden lg:flex items-center space-x-8">
+          <a href="#" class="nav-link text-gray-800 hover:text-primary font-medium">home</a>
+          <a href="#about" class="nav-link text-gray-800 hover:text-primary font-medium">About</a>
+          <a href="../checkout.html" class="nav-link text-gray-600 hover:text-primary font-medium">Menu</a>
+          <a href="#contactme" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
+          </div>
+      
+      <!-- Desktop Auth Buttons -->
+       <a href="../authentication/auth.html">
+      <div class="hidden lg:flex items-center space-x-4">
+        <button class="auth-btn px-4 py-2 text-gray-800 font-medium hover:text-primary whitespace-nowrap">
+        Login
+        </button>
+      </a>
+      <a href="../authentication/auth.html">
+        <button class="auth-btn px-4 py-2 bg-primary text-white font-medium rounded-button hover:bg-primary/90 whitespace-nowrap">
+        Sign Up
+        </button>
+      </a>
+      </div>
+      </div>
+      </div>
+      </nav>
+      <!-- Mobile Hamburger Button -->
+      <div class="mobile-logo"style="background-color: white;">
+        <div class="logo">
+          <a href="./index.html" class="flex items-center justify-center" style="padding-left: 10px; padding-top: 10px;">
+            <span class="text-2xl font-['Pacifico'] text-primary"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Annie's <br/> <span class="food-pulse" style="color: black; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">food</span>Empire</span>
+          </a>
+        </div>
+        <div class="ham">
+          <button id="sidebarToggle" class="mobile-only fixed top-4 right-4 z-50 w-10 h-10 flex items-center justify-center  color-black bg-white rounded-full  hover:bg-rgb(255, 107, 53)-80">
+          <i class="ri-menu-line ri-lg" style="color: black; font-size: 1.8em;"></i>
+          </button>
+        </div>  
+      </div>
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar bg-white flex flex-col justify-between py-8 px-6 transition-transform duration-300 ease-in-out">
+      <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary" id="closeButton">
+      <i class="ri-close-line ri-lg"></i>
+      </button>
+      <!-- Logo Section -->
+      <div class="mb-12">
+      <a href="./index.html" class="flex items-center justify-center">
+      <span class="text-3xl font-['Pacifico'] text-primary" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Annie's <br><span class="food-pulse" style="color: black;">food</span>Empire</span>
+      </a>
+      </div>
+      <!-- Navigation Links -->
+      <nav class="flex-grow">
+      <ul class="space-y-6">
+      <li>
+      <a href="./index.html" class="nav-link active flex items-center text-gray-800 hover:text-primary group pb-2">
+      <div class="w-10 h-10 flex items-center justify-center mr-3 text-primary">
+      <i class="ri-home-5-line ri-lg"></i>
+      </div>
+      <span class="text-base font-medium">Home</span>
+      </a>
+      </li>
+      <li>
+        <a href="#about" class="nav-link flex items-center text-gray-600 hover:text-primary group pb-2">
+        <div class="w-10 h-10 flex items-center justify-center mr-3 text-gray-500 group-hover:text-primary">
+        <i class="ri-restaurant-line ri-lg"></i>
+        </div>
+        <span class="text-base font-medium">About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkout.html" class="nav-link flex items-center text-gray-600 hover:text-primary group pb-2">
+        <div class="w-10 h-10 flex items-center justify-center mr-3 text-gray-500 group-hover:text-primary">
+        <i class="ri-restaurant-line ri-lg"></i>
+        </div>
+        <span class="text-base font-medium">Menu</span>
+        </a>
+      </li>
+      <li>
+      <a href="#contactme" class="nav-link flex items-center text-gray-600 hover:text-primary group pb-2">
+      <div class="w-10 h-10 flex items-center justify-center mr-3 text-gray-500 group-hover:text-primary">
+      <i class="ri-message-3-line ri-lg"></i>
+      </div>
+      <span class="text-base font-medium">Contact</span>
+      </a>
+      </li>
+      </ul>
+      </nav>
+      <!-- Social Media Icons -->
+      
+<!-- From Uiverse.io by wilsondesouza --> 
+<ul class="example-2">
+  <li class="icon-content">
+    <a
+      data-social="whatsapp"
+      aria-label="Whatsapp"
+      href="https://api.whatsapp.com/send?phone=+112067101079&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 24 24"
+        class="bi bi-whatsapp"
+        fill="currentColor"
+        height="24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Whatsapp</div>
+  </li>
+  <li class="icon-content">
+    <a
+      data-social="facebook"
+      aria-label="Facebook"
+      href="https://www.facebook.com/"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 24 24"
+        class="bi bi-facbook"
+        fill="currentColor"
+        height="24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Facebook</div>
+  </li>
+  <li class="icon-content">
+    <a
+      data-social="instagram"
+      aria-label="Instagram"
+      href="https://www.instagram.com/"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 16 16"
+        class="bi bi-instagram"
+        fill="currentColor"
+        height="16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Instagram</div>
+  </li>
+</ul>
+
+      <!-- Authentication Buttons -->
+      <div class="space-y-3 mt-auto">
+        <a href="../authentication/auth.html">
+          <button class="auth-btn w-full py-3 px-4 bg-white border border-gray-200 text-gray-800 font-medium rounded-button flex items-center justify-center hover:border-primary hover:text-primary whitespace-nowrap">
+          <i class="ri-user-line mr-2"></i>
+          Login
+          </button>
+        </a>
+        <a href="../authentication/auth.html">  
+          <button class="auth-btn w-full py-3 px-4 bg-primary text-white font-medium rounded-button flex items-center justify-center hover:bg-primary/90 whitespace-nowrap">
+          <i class="ri-user-add-line mr-2"></i>
+          Sign Up
+          </button>
+        </a>  
+      </div>
+  </aside>
+     
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1 style=" color: white;">Elevate Your Taste Buds with <br><span class="text-4xl font-['Pacifico'] text-primary"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Annie's <br/> <span class="food-pulse" style="color: white;">food</span> Empire</span> </h1>
+      <p>Bringing the flavor of Nigeria to the Philippines — Indulge in Mouthwathering dishes crafted with passion!</p>
+      <div class="hero-buttons">
+        <!-- From Uiverse.io by vinodjangid07 --> 
+     <a href="../checkout.html" class="button-link"><button class="button">
+      <span class="text">Explore</span>
+      <span class="svg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="20"
+          viewBox="0 0 38 15"
+          fill="none"
+        >
+          <path
+            fill="white"
+            d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"
+          ></path>
+        </svg>
+      </span>
+    </button>
+    </a>
+    </div> 
+    
+  </section>
+  <!-- hero section ends -->
+  <div id="about"></div>
+  <br>
+  <br>
+<!-- About Section -->
+<section class="about">
+  <div class="about-container">
+      <div class="about-content">
+          <div class="section-label">OUR STORY</div>
+          <h2>About Us</h2>
+          <div class="divider"></div>
+          <p>At <span class="text-3xl font-['Pacifico'] text-primary">Annie's <span class="food-pulse" style="color: black;">food</span>Empire</span>, we're all about good food. From tasty classics to exciting new flavors, we serve fresh and flavorful dishes. Whether you're grabbing a quick bite or feeding a crowd, we've got something delicious for everyone.</p>
+          <p class="tagline">Visit hungry — leave happy!</p>
+          <a href="../checkout.html"><button class="cta-button">Our Menu</button></a>
+      </div>
+      <div class="about-image">
+          <div class="image-wrapper">
+              <img src="../images/about.jpg" alt="Chef preparing food" loading="lazy">
+              <div class="image-overlay"></div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- About Section Ends -->
+
+ <div id="specials"></div>
+  <br/>
+  <br/>
+  
+  <!-- Specials -->
+  <section class="specials">
+    <div class="specials-header">
+        <h1>
+          ✨Specials
+        </h1>
+        <p>Indulge in Our Specials - Exquisite Dishes Crafted with Fresh Ingredients and a Dash of Creativity!</p>
+    </div>
+
+    <div class="dish1">
+      <div class="specials-dish">
+       <h2>Jollof Rice</h2>
+       <p>A symphony of bold flavors, simmered to perfection in a rich tomato blend. 
+        <br/>A dish of heritage, warmth, and pure indulgence. </p>
+       <br/>
+       <button><a href="../checkout.html">View Menu</a></button>
+      </div>
+    </div>
+
+    <div class="dish2">
+      <div class="specials-dish-left">
+        <h2>Egusi Soup</h2>
+        <p>Rich with flavors simmered in a savory, aromatic broth. A taste of tradition in every scoop.</p>
+        <br>
+        <button><a href="../checkout.html">View Menu</a></button>
+      </div>
+    
+
+      <div class="specials-dish-right" >
+        <h2>Jollof Spagetti</h2>
+        <p>rich tomato flavors and perfectly cooked pasta, A taste of tradition with a modern flair!</p>
+        <br>
+        <button><a href="../checkout.html">View Menu</a></button>
+      </div>
+    </div>
+
+    <div class="dish3">
+      <div class="specials-dish">
+       <h2>Shawarma</h2>
+       <p>One bite of our shawarma and you’ll taste the difference.
+        <br/>juicy, perfectly spiced, and wrapped in flavor that speaks for itself.</p>
+       <br/>
+       <button><a href="../checkout.html">View Menu</a></button>
+      </div>
+    </div>
+  </section>
+  <!-- Specials End -->
+
+  <div id="contactme"></div>
+  <br/>
+  <br/>
+
+<!-- Modern Contact Section -->
+<div id="contactme"></div>
+<section id="contact " class="contact-section">
+  <div class="contact-wrapper" >
+    <div class="contact-header">
+      <h1 class="contact-title">Get In Touch</h1>
+      <p class="contact-subtitle">We'd love to hear from you! Whether you have a question, want to place an order, or need catering info — reach out anytime.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form id="contactForm" class="contact-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required class="modern-input">
+          <span class="input-focus"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required class="modern-input">
+          <span class="input-focus"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" required class="modern-textarea"></textarea>
+          <span class="input-focus"></span>
+        </div>
+        
+        <button type="submit" class="modern-button">
+          <span>Send Message</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" class="send-icon">
+            <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path>
+          </svg>
+        </button>
+      </form>
+      
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="#ff6b35" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"></path>
+            </svg>
+          </div>
+          <div class="info-content">
+            <h3>Email Us</h3>
+            <a href="mailto:Anniesfoodempire@gmail.com">Anniesfoodempire@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="#ff6b35" d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"></path>
+            </svg>
+          </div>
+          <div class="info-content">
+            <h3>Call Us</h3>
+            <a href="tel:+6900000000">(+69) 0000-0000</a>
+          </div>
+        </div>
+        <!-- From Uiverse.io by wilsondesouza --> 
+   <ul class="example-2" style="justify-content: left;">
+    <div><h2 style="font-weight: 600; font-size: 1.7em; color: #ff6b35;">Follow Us</h2></div>
+    <br>
+    <li class="icon-content">
+      <a
+        data-social="whatsapp"
+        aria-label="Whatsapp"
+        href="https://api.whatsapp.com/send?phone=+112067101079&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
+      >
+        <div class="filled"></div>
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 24 24"
+          class="bi bi-whatsapp"
+          fill="currentColor"
+          height="24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="currentColor"
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+          ></path>
+        </svg>
+      </a>
+      <div class="tooltip">Whatsapp</div>
+    </li>
+    <li class="icon-content">
+      <a
+        data-social="facebook"
+        aria-label="Facebook"
+        href="https://www.facebook.com/"
+      >
+        <div class="filled"></div>
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 24 24"
+          class="bi bi-facbook"
+          fill="currentColor"
+          height="24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="currentColor"
+            d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"
+          ></path>
+        </svg>
+      </a>
+      <div class="tooltip">Facebook</div>
+    </li>
+    <li class="icon-content">
+      <a
+        data-social="instagram"
+        aria-label="Instagram"
+        href="https://www.instagram.com/"
+      >
+        <div class="filled"></div>
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 16 16"
+          class="bi bi-instagram"
+          fill="currentColor"
+          height="16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="currentColor"
+            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+          ></path>
+        </svg>
+      </a>
+      <div class="tooltip">Instagram</div>
+    </li>
+  </ul>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modern Footer -->
+<footer class="modern-footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <span class="logo-text"  style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Annie's <span class="logo-highlight food-pulse">food</span> Empire</span>
+    </div>
+    
+    <div class="footer-links">
+      <a href="./home page/index.html">Home</a>
+      <a href="./checkout.html">Menu</a>
+      <a href="#contactme">Contact</a>
+    </div>
+    
+    <div class="footer-social">
+      <p>Follow our culinary journey</p>
+      <div class="social-icons">
+        <a href="#" aria-label="WhatsApp" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.42-.58 1.62-1.18.2-.56.2-1.05.14-1.16-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.43.13-.14.17-.24.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"></path></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"></path></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2025 Annie's Food Empire. All rights reserved.</p>
+    <div class="legal-links">
+      <a href="./privacy-policy.html" style="text-decoration: underline;">Privacy Policy</a>
+      <a href="./terms-of-service.html" style="text-decoration: underline;">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Confirmation Message -->
+<div id="confirmationMsg" class="confirmation-message">
+  <svg viewBox="0 0 24 24" width="24" height="24" class="confirmation-icon">
+    <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
+  </svg>
+  <span>Your message has been sent successfully!</span>
+</div>
+<!-- footer ends -->
+
+  <script src="script.js"></script>
+</body>
+</html>
