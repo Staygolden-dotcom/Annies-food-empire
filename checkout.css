@@ -5,7 +5,7 @@
   padding: 0;
 }
 body {
-font-family: cursive, sans-serif;
+font-family: Montserrat, sans-serif;
 background-color: #FAFAFA;
 }
 :where([class^="ri-"])::before { content: "\f3c2"; }
@@ -758,3 +758,10 @@ ul {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.swipe-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain; /* Prevent page scroll when swiping horizontally */
+    touch-action: pan-y; /* Enable vertical touch scrolling by default */
+}
+
+/* When actively swiping horizontally, JavaScript will prevent default behavior */
