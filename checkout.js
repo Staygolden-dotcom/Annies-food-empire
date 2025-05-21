@@ -220,84 +220,137 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 
 
-// Add this to your checkout.js or script tag
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize all swipe containers
-  const swipeContainers = document.querySelectorAll('.swipe-container');
-  
-  swipeContainers.forEach(container => {
-      let startX;
-      let scrollLeft;
-      let isDown = false;
-      
-      // Touch events
-      container.addEventListener('touchstart', (e) => {
-          const touch = e.touches[0];
-          startX = touch.pageX - container.offsetLeft;
-          scrollLeft = container.scrollLeft;
-          isDown = true;
-          container.style.scrollBehavior = 'auto'; // Disable smooth scrolling during drag
-      });
-      
-      container.addEventListener('touchmove', (e) => {
-          if (!isDown) return;
+  const swipeContainers = document.querySelectorAll(".swipe-container");
+
+  swipeContainers.forEach((container) => {
+    let startX, startY;
+    let scrollLeft;
+    let isDown = false;
+    let isScrollingHorizontally = false;
+
+    // Touch events
+    container.addEventListener(
+      "touchstart",
+      (e) => {
+        const touch = e.touches[0];
+        startX = touch.pageX - container.offsetLeft;
+        startY = touch.pageY - container.offsetTop;
+        scrollLeft = container.scrollLeft;
+        isDown = true;
+        isScrollingHorizontally = false;
+        container.style.scrollBehavior = "auto";
+      },
+      { passive: false }
+    );
+
+    container.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!isDown) return;
+
+        const touch = e.touches[0];
+        const x = touch.pageX - container.offsetLeft;
+        const y = touch.pageY - container.offsetTop;
+
+        // Calculate movement in both directions
+        const xDiff = Math.abs(x - startX);
+        const yDiff = Math.abs(y - startY);
+
+        // Determine scroll direction after initial movement
+        if (!isScrollingHorizontally && xDiff < 10 && yDiff < 10) {
+          return; // Ignore tiny movements
+        }
+
+        if (!isScrollingHorizontally) {
+          // Decide if we're scrolling horizontally or vertically
+          isScrollingHorizontally = xDiff > yDiff;
+        }
+
+        if (isScrollingHorizontally) {
+          // Horizontal scrolling - handle the swipe
           e.preventDefault();
-          const touch = e.touches[0];
-          const x = touch.pageX - container.offsetLeft;
-          const walk = (x - startX) * 2; // Adjust multiplier for swipe sensitivity
-          container.scrollLeft = scrollLeft - walk;
-      });
-      
-      container.addEventListener('touchend', () => {
-          isDown = false;
-          container.style.scrollBehavior = 'smooth'; // Re-enable smooth scrolling
-      });
-      
-      // Mouse events for desktop testing
-      container.addEventListener('mousedown', (e) => {
-          isDown = true;
-          startX = e.pageX - container.offsetLeft;
-          scrollLeft = container.scrollLeft;
-          container.style.scrollBehavior = 'auto';
-      });
-      
-      container.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - container.offsetLeft;
           const walk = (x - startX) * 2;
           container.scrollLeft = scrollLeft - walk;
-      });
-      
-      container.addEventListener('mouseup', () => {
-          isDown = false;
-          container.style.scrollBehavior = 'smooth';
-      });
-      
-      container.addEventListener('mouseleave', () => {
-          isDown = false;
-      });
-      
-      // Navigation arrows functionality
-      const prevBtn = container.parentElement.querySelector('.swipe-prev');
-      const nextBtn = container.parentElement.querySelector('.swipe-next');
-      
-      if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-              container.scrollBy({
-                  left: -300,
-                  behavior: 'smooth'
-              });
-          });
+        } else {
+          // Vertical scrolling - let the page handle it
+          return;
+        }
+      },
+      { passive: false }
+    );
+
+    container.addEventListener("touchend", () => {
+      isDown = false;
+      isScrollingHorizontally = false;
+      container.style.scrollBehavior = "smooth";
+    });
+
+    // Mouse events for desktop testing
+    container.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      startY = e.pageY - container.offsetTop;
+      scrollLeft = container.scrollLeft;
+      isScrollingHorizontally = false;
+      container.style.scrollBehavior = "auto";
+    });
+
+    container.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+
+      const x = e.pageX - container.offsetLeft;
+      const y = e.pageY - container.offsetTop;
+      const xDiff = Math.abs(x - startX);
+      const yDiff = Math.abs(y - startY);
+
+      if (!isScrollingHorizontally && xDiff < 5 && yDiff < 5) {
+        return;
       }
-      
-      if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-              container.scrollBy({
-                  left: 300,
-                  behavior: 'smooth'
-              });
-          });
+
+      if (!isScrollingHorizontally) {
+        isScrollingHorizontally = xDiff > yDiff;
       }
+
+      if (isScrollingHorizontally) {
+        e.preventDefault();
+        const walk = (x - startX) * 2;
+        container.scrollLeft = scrollLeft - walk;
+      }
+    });
+
+    container.addEventListener("mouseup", () => {
+      isDown = false;
+      isScrollingHorizontally = false;
+      container.style.scrollBehavior = "smooth";
+    });
+
+    container.addEventListener("mouseleave", () => {
+      isDown = false;
+      isScrollingHorizontally = false;
+    });
+
+    // Navigation arrows functionality
+    const prevBtn = container.parentElement.querySelector(".swipe-prev");
+    const nextBtn = container.parentElement.querySelector(".swipe-next");
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        container.scrollBy({
+          left: -300,
+          behavior: "smooth",
+        });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        container.scrollBy({
+          left: 300,
+          behavior: "smooth",
+        });
+      });
+    }
   });
 });
