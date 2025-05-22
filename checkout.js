@@ -201,21 +201,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Simple form submission handler
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Show confirmation message
-  const confirmationMsg = document.getElementById('confirmationMsg');
-  confirmationMsg.style.display = 'flex';
-  
-  // Hide after 5 seconds
-  setTimeout(() => {
-    confirmationMsg.style.display = 'none';
-  }, 5000);
-  
-  // Reset form
-  this.reset();
+// Contact form submission
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show success message
+    const notification = document.createElement("div");
+    notification.className = "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 flex items-center";
+    notification.innerHTML = `
+        <i class="ri-checkbox-circle-line ri-lg mr-2"></i>
+        Your message was sent successfully!
+    `;
+    document.body.appendChild(notification);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 5000);
+    
+    // Reset form
+    this.reset();
 });
 
 
@@ -354,3 +359,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+// Checkout form submission
+checkoutForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(checkoutForm);
+    const orderData = {
+        items: cart,
+        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+        customer: {
+            name: formData.get("fullName"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            address: formData.get("address"),
+        },
+        paymentMethod: formData.get("paymentMethod"),
+    };
+    
+    // Here you would typically send the order to your backend
+    console.log("Order placed:", orderData);
+    
+    // Clear cart and close modal
+    cart = [];
+    updateCart();
+    checkoutModal.classList.add("hidden");
+    checkoutModal.classList.remove("flex");
+    
+    // Show success message
+    showNotification("Order placed successfully!", "success");
+});
+
+function showNotification(message, type = "success") {
+    const notification = document.createElement("div");
+    notification.className = `fixed top-4 right-4 px-6 py-3 rounded shadow-lg z-50 flex items-center animate-fade-in-up ${
+        type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+    }`;
+    notification.innerHTML = `
+        <i class="ri-${type === "success" ? "checkbox-circle" : "close-circle"}line ri-lg mr-2"></i>
+        ${message}
+    `;
+    document.body.appendChild(notification);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.classList.add("animate-fade-out");
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 5000);
+}
+
