@@ -68,19 +68,24 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", checkWindowSize);
 });
 
-// Simple form submission handler
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Show confirmation message
-  const confirmationMsg = document.getElementById('confirmationMsg');
-  confirmationMsg.style.display = 'flex';
-  
-  // Hide after 5 seconds
-  setTimeout(() => {
-    confirmationMsg.style.display = 'none';
-  }, 5000);
-  
-  // Reset form
-  this.reset();
+// Contact form submission
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show success message
+    const notification = document.createElement("div");
+    notification.className = "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 flex items-center";
+    notification.innerHTML = `
+        <i class="ri-checkbox-circle-line ri-lg mr-2"></i>
+        Your message was sent successfully!
+    `;
+    document.body.appendChild(notification);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 5000);
+    
+    // Reset form
+    this.reset();
 });
