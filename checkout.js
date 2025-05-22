@@ -408,4 +408,66 @@ function showNotification(message, type = "success") {
         }, 300);
     }, 5000);
 }
+// Reusable notification function with mobile support
+function showNotification(message, type = "success") {
+    const notification = document.createElement("div");
+    notification.className = `fixed z-50 px-6 py-3 rounded shadow-lg flex items-center ${
+        type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+    }`;
+    
+    // Mobile positioning (centered at bottom)
+    notification.className += ' bottom-4 left-4 right-4 mx-auto max-w-md';
+    // Desktop positioning (top-right)
+    if (window.innerWidth >= 768) {
+        notification.className = notification.className.replace('bottom-4 left-4 right-4', 'top-4 right-4');
+    }
 
+    notification.innerHTML = `
+        <i class="ri-${type === "success" ? "checkbox-circle" : "close-circle"}line ri-lg mr-2"></i>
+        ${message}
+    `;
+    document.body.appendChild(notification);
+    
+    // Add touch event to dismiss notification
+    notification.addEventListener('touchstart', () => {
+        notification.remove();
+    });
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 5000);
+}
+
+// Contact form submission with mobile support
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show success message
+    showNotification("Your message was sent successfully!");
+    
+    // Reset form
+    this.reset();
+    
+    // Prevent keyboard from staying open on mobile
+    if (document.activeElement) {
+        document.activeElement.blur();
+    }
+});
+
+// Make sure the form is mobile-friendly
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        // Prevent zooming on input focus for mobile
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.fontSize = '16px'; // Prevent mobile zoom
+            });
+        });
+    }
+});
