@@ -7,135 +7,102 @@
 <link rel="stylesheet" href="./checkout.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
- <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=YourFontName&display=swap" rel="stylesheet">
-<script>
-      tailwind.config = {
-    theme: {
-    extend: {
-    colors: {
-    primary: '#FF6B35',
-    secondary: '#2EC4B6'
-    },
-    borderRadius: {
-    'none': '0px',
-    'sm': '4px',
-    DEFAULT: '8px',
-    'md': '12px',
-    'lg': '16px',
-    'xl': '20px',
-    '2xl': '24px',
-    '3xl': '32px',
-    'full': '9999px',
-    'button': '8px'
-    },
-    fontFamily: {
-    'poppins': ['Poppins', 'sans-serif']
-    }
-    }
-    }
-    }
-</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- Navbar -->
-  <header class="navbar" >
-   
-    <!-- Desktop Navigation -->
-      <nav class="desktop-nav w-full bg-white shadow-sm fixed top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <span class="text-3xl font-['Pacifico'] text-primary" href="./index.html">Annie's <br/><span class="food-pulse" style="color: black;">food</span>Empire</span>
-      <!-- Desktop Navigation Links -->
-          <div class="hidden lg:flex items-center space-x-8">
-          <a href="./index.html" class="nav-link text-gray-800 hover:text-primary font-medium">home</a>
-          <a href="./checkout.html" class="nav-link text-gray-600 hover:text-primary font-medium">Menu</a>
-          <a href="#contactme" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
-          </div>
-      
-      <!-- Desktop Auth Buttons -->
-      <div class="hidden lg:flex items-center space-x-4">
-        <a href="./authentication/auth.html">
-            <button class="auth-btn px-4 py-2 text-gray-800 font-medium hover:text-primary whitespace-nowrap">
-            Login
-            </button>
-        </a>
-        <a href="./authentication/auth.html">
-            <button class="auth-btn px-4 py-2 bg-primary text-white font-medium rounded-button hover:bg-primary/90 whitespace-nowrap">
-            Sign Up
-            </button>
-        </a>
-      </div>
-      </div>
-      </div>
-      </nav>
-      <!-- Mobile Hamburger Button -->
-      <div class="mobile-logo"style="background-color: white;">
-        <div class="logo">
-          <a href="./index.html" class="flex items-center justify-center" style="padding-left: 10px; padding-top: 10px;">
-            <span class="text-2xl font-['Pacifico'] text-primary" href="./index.html">Annie's <br/> <span class="food-pulse" style="color: black;">food</span>Empire</span>
-          </a>
-        </div>
-        <div class="ham">
-          <button id="sidebarToggle" class="mobile-only fixed top-4 right-4 z-50 w-10 h-10 flex items-center justify-center  color-black bg-white rounded-full  hover:bg-rgb(255, 107, 53)-80">
-          <i class="ri-menu-line ri-lg" style="color: black; font-size: 1.8em;"></i>
-          </button>
-        </div>  
-      </div>
-      <!-- Sidebar -->
-      <aside id="sidebar" class="sidebar bg-white flex flex-col justify-between py-8 px-6 transition-transform duration-300 ease-in-out">
-      <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary" id="closeButton">
-      <i class="ri-close-line ri-lg"></i>
-      </button>
-      <!-- Logo Section -->
-      <div class="mb-12">
-      <a href="./index.html" class="flex items-center justify-center">
-      <span class="text-3xl font-['Pacifico'] text-primary" href="./index.html">Annie's <br><span class="food-pulse" style="color: black;">food</span>Empire</span>
-      </a>
-      </div>
-      <!-- Navigation Links -->
-      <nav class="flex-grow">
-      <ul class="space-y-6">
-        <li>
-            <a href="./index.html" class="nav-link flex items-center text-gray-600 hover:text-primary group pb-2">
-            <div class="w-10 h-10 flex items-center justify-center mr-3 text-gray-500 group-hover:text-primary">
-            <i class="ri-home-5-line ri-lg"></i>
+ <!-- Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container" style="justify-content: space-around;">
+                <a href="./home page/index.html" class="logo">
+                     <span style="font-family: cursive, sans-serif; font-weight: 400; color: #FF6B35;">Annie's <span class="logo-icon"><i class="fas fa-utensils food-pulse" style="color: black;"></i></span><br/><span class="food-pulse" style="color: black;">food</span>Empire</span>
+                </a>
+                
+                <div class="desktop-menu" style="margin-left: 20em;">
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="./index.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-home"></i></span>
+                                <span class="nav-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./checkout.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fa-solid fa-utensils"></i></span>
+                                <span class="nav-text">Menu</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contactme" class="nav-link">
+                                <span class="nav-icon"><i class="fa-solid fa-phone-volume"></i></span>
+                                <span class="nav-text">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mobile-menu-toggle" style="margin-left: 7em;">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
             </div>
-            <span class="text-base font-medium">Home</span>
-            </a>
-            </li>
-      <li>
-        <a href="./checkout.html" class="nav-link active flex items-center text-gray-800 hover:text-primary group pb-2">
-        <div class="w-10 h-10 flex items-center justify-center mr-3 text-primary">
-        <i class="ri-restaurant-line ri-lg"></i>
-        </div>
-        <span class="text-base font-medium">Menu</span>
-        </a>
-        </li>
-      <li>
-      <a href="#contactme" class="nav-link flex items-center text-gray-600 hover:text-primary group pb-2">
-      <div class="w-10 h-10 flex items-center justify-center mr-3 text-gray-500 group-hover:text-primary">
-      <i class="ri-message-3-line ri-lg"></i>
-      </div>
-      <span class="text-base font-medium">Contact</span>
-      </a>
-      </li>
-      </ul>
-      </nav>
-      <!-- Social Media Icons -->
-      
-<!-- From Uiverse.io by wilsondesouza --> 
-<ul class="example-2">
+        </nav>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" style="z-index: 10000;">
+            <div class="mobile-menu-container">
+                <div class="logo-close-button"  style="border-bottom: 2px solid rgb(95, 91, 91); padding-bottom: 10px;">
+                    <div>
+                        <a href="./index.html" class="logo">
+                            <span class="food-pulse" style="color: black;"><i class="fas fa-utensils food-pulse" style="color: black; font-size: 1.5em; padding-top: 30px;"></i></span>
+                        </a>
+                    </div>
+                    <div class="mobile-menu-container">
+                        <button class="close-menu-btn" aria-label="Close menu">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul class="mobile-nav-links">
+                    <li class="mobile-nav-item">
+                        <a href="./index.html" class="mobile-nav-link">
+                            <span class="mobile-nav-icon"><i class="fas fa-home"></i></span>
+                            <span class="mobile-nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="./checkout.html" class="mobile-nav-link active">
+                            <span class="mobile-nav-icon"><i class="fa-solid fa-utensils"></i></span>
+                            <span class="mobile-nav-text">Menu</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#contactme" class="mobile-nav-link">
+                            <span class="mobile-nav-icon"><i class="fa-solid fa-phone-volume"></i></span>
+                            <span class="mobile-nav-text">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="mobile-social-section">
+                    <p class="follow-text">Follow Us</p>
+        <!-- From Uiverse.io by wilsondesouza --> 
+ <ul class="example-2">
   <li class="icon-content">
     <a
       data-social="whatsapp"
       aria-label="Whatsapp"
-      href="https://api.whatsapp.com/send?phone=+112067101079&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
+      href="https://api.whatsapp.com/send?phone=+639198517845&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
     >
       <div class="filled"></div>
       <svg
@@ -203,1637 +170,157 @@
     </a>
     <div class="tooltip">Instagram</div>
   </li>
-</ul>
-
-      <!-- Authentication Buttons -->
-      <div class="space-y-3 mt-auto">
-        <a href="./authentication/auth.html">
-          <button class="auth-btn w-full py-3 px-4 bg-white border border-gray-200 text-gray-800 font-medium rounded-button flex items-center justify-center hover:border-primary hover:text-primary whitespace-nowrap">
-          <i class="ri-user-line mr-2"></i>
-          Login
-          </button>
-        </a>
-        <a href="./authentication/auth.html">  
-          <button class="auth-btn w-full py-3 px-4 bg-primary text-white font-medium rounded-button flex items-center justify-center hover:bg-primary/90 whitespace-nowrap">
-          <i class="ri-user-add-line mr-2"></i>
-          Sign Up
-          </button>
-        </a>  
-      </div>
-  </aside>  
+</ul> 
+                </div>
+            </div>
+        </div>
 </header>
 
+<div style="height: 70px;"></div>
+ 
 <!-- Main Content -->
-<main class="flex-1" class="flex-1 pt-20 p-8 transition-all duration-300" id="mainContent">
-    <div class="max-w-6xl mx-auto">
-        <!-- Cart Preview -->
-        <div id="cartPreview" class="fixed top-20 right-0.5 bg-white p-4 rounded-lg shadow-lg w-80 transform translate-x-full transition-transform duration-300 z-40">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-lg font-semibold">Your Cart</h3>
-            <button id="closeCart" class="text-gray-500 hover:text-primary">
-                <i class="ri-close-line ri-lg"></i>
-            </button>
-        </div>
-        <div id="cartItems" class="space-y-3 max-h-96       overflow-y-auto">
-        </div>
-        <div class="border-t mt-4 pt-4">
-            <div class="flex justify-between font-semibold mb-4">
-                <span>Total:</span>
-                <span id="cartTotal">$0.00</span>
-            </div>
-            <button id="checkoutBtn" class="w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center">
-                <i class="ri-shopping-cart-line mr-2"></i>
-                Proceed to Checkout
-            </button>
-        </div>
+<main class="menu-container">
+    <div style="justify-self: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="black"><path d="m168.33-120-46.66-46.67 416.66-416.66q-20.66-46-8.33-98t57-96q47.67-47 112-58.34Q763.33-847 804.33-806 846-764.33 834-700.67 822-637 773-587.33q-41.33 42.66-92.67 55.66-51.33 13-94.66-5.66L524.33-476l309.34 309.33L787-120 477.67-428.67 168.33-120ZM291-468 171.67-587.33q-52-52-53.34-123.67Q117-782.67 167-836.67L413-590 291-468Z"/></svg>
     </div>
-        <!-- Cart Toggle Button -->
-    <button id="cartToggle" class="fixed top-20 right-4 z-30  text-white p-3 rounded-full">
-        <div class="relative">
-            <i class="ri-shopping-cart-line ri-lg" style="color: #FF6B35;"></i>
-            <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+
+    <h1 class="section-title" >Our Menu</h1>
+   
+    <div class="menu-tabs">
+        <button class="menu-tab active" data-category="rice_Fiesta">Rice Fiesta</button>
+        <button class="menu-tab" data-category="beans">Beans</button>
+        <button class="menu-tab" data-category="soups">Soup</button>
+        <button class="menu-tab" data-category="swallow">Swallow</button>
+        <button class="menu-tab" data-category="pastas">Pasta</button>
+        <button class="menu-tab" data-category="proteins">Proteins</button>
+        <button class="menu-tab" data-category="sides">Sides</button>
+        <button class="menu-tab" data-category="wraps">Wraps</button>
+    </div>
+    
+    <div class="menu-content">
+        <!-- Categories will be populated by JavaScript -->
+    </div>
+</main>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h3 class="cart-title">Your Order</h3>
+        <button class="close-cart">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="cart-items">
+        <!-- Cart items will be added here -->
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-price">$0.00</span>
         </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
+<div class="cart-overlay"></div>
+
+<!-- Floating Cart Button -->
+<div class="floating-cart">
+    <button class="cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
     </button>
+</div>
 
-    <div style="height: 40px;"></div>
-  <!-- Menu Container -->
-
-  <div class="max-w-3xl mx-auto text-center mb-16 px-4" style="margin-top: 80px;">
-    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-      <i class="ri-restaurant-2-line text-2xl text-primary"></i>
-    </div>
-    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-      Our <span class="text-primary">Menu</span>
-    </h1>
-    <div class="w-20 h-1 bg-primary mx-auto mb-6 rounded-full"></div>
-    <p class="text-gray-600 text-1xl max-w-xl mx-auto">
-        Discover our carefully curated selection of authentic dishes made with love and tradition.
-    </p>
-  </div>
-  
-   <!-- Rice Dishes Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Rice Feast</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Jolof Rice -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/jollof-rice-chiken-plantain.jpg" alt="Jollof Rice" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Jollof Rice</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="1" data-name="Jollof Rice" data-price="400.00" data-image="jollof-rice">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fried Rice -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/fried-rice.jpg" alt="Fried Rice" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Fried Rice</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="2" data-name="Fried Rice" data-price="400.00" data-image="fried-rice">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Coconut Fried Rice -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/coconut-fried-rice.jpg" alt="Coconut Fried Rice" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Coconut Fried Rice</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="3" data-name="Coconut Fried Rice" data-price="500.00" data-image="coconut-friedrice">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Native Rice -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start;  width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/native-rice.jpg" alt="Native Rice" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Native Rice</h3>
-                                <span class="text-primary font-semibold">₱600.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="4" data-name="Native Rice" data-price="600.00" data-image="native-rice">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Rice and Stew -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/rice-and-stew.jpg" alt="Rice and Stew" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Rice and Stew</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="5" data-name="Rice and Stew" data-price="500.00" data-image="rice-and-stew">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Oriental Rice -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/orientail-fried-rice.jpg" alt="Oriental Rice" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Oriental Rice</h3>
-                                <span class="text-primary font-semibold">₱600.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="6" data-name="Oriental Rice" data-price="600.00" data-image="oriental-rice">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
+<!-- Checkout Modal -->
+<div class="checkout-modal">
+    <div class="checkout-container">
+        <button class="close-checkout">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="checkout-title">Complete Your Order</h2>
+        <div class="order-summary">
+            <!-- Order items will be added here -->
         </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Jolof Rice -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/jollof-rice-chiken-plantain.jpg" alt="Jollof Rice" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Jollof Rice</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="1" data-name="Jollof Rice" data-price="400.00" data-image="jollof-rice">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Fried Rice -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/fried-rice.jpg" alt="Fried Rice" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Fried Rice</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="2" data-name="Fried Rice" data-price="400.00" data-image="fried-rice">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Coconut Fried Rice -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/coconut-fried-rice.jpg" alt="Coconut Fried Rice" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Coconut Fried Rice</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="3" data-name="Coconut Fried Rice" data-price="500.00" data-image="coconut-friedrice">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Native Rice -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/native-rice.jpg" alt="Native Rice" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Native Rice</h3>
-                        <span class="text-primary font-semibold">₱600.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="4" data-name="Native Rice" data-price="600.00" data-image="native-rice">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Rice and Stew -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/rice-and-stew.jpg" alt="Rice and Stew" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Rice and Stew</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="5" data-name="Rice and Stew" data-price="500.00" data-image="rice-and-stew">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Oriental Rice -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/orientail-fried-rice.jpg" alt="Oriental Rice" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Oriental Rice</h3>
-                        <span class="text-primary font-semibold">₱600.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="6" data-name="Oriental Rice" data-price="600.00" data-image="oriental-rice">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
+        <div class="order-total">
+            <span>Total:</span>
+            <span class="final-total">$0.00</span>
         </div>
-    </div>
-</section>
-
-<!-- Protein Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Sizzling Proteins</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-1 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Peppered Chicken -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/chicken.jpg" alt="Peppered Chicken" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Peppered Chicken</h3>
-                                <span class="text-primary font-semibold">₱200.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="7" data-name="Peppered Chicken" data-price="200.00" data-image="peppered-chicken">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Peppered Beef -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/beef.jpg" alt="Peppered Beef" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Peppered Beef <span style="font-size: 0.7em; color: rgba(0, 0, 0, 0.3);">(2px)</span></h3>
-                                <span class="text-primary font-semibold">₱200.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="8" data-name="Peppered Beef" data-price="200.00" data-image="peppered-beef">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Egg -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/eggs.jpg" alt="Egg" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Egg</h3>
-                                <span class="text-primary font-semibold">₱20.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="9" data-name="Egg" data-price="20.00" data-image="egg">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Grilled Fish -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/grilled-fish.jpg" alt="Grilled Fish" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Grilled Fish</h3>
-                                <span class="text-primary font-semibold">₱800.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="10" data-name="Grilled Fish" data-price="800.00" data-image="grilled-fish">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
+        <h3 style="margin-bottom: 20px; text-align: center; color: #FF6B35;">Choose how to complete your order</h3>
+        <div class="social-options">
+            <button class="social-btn whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
+            <button class="social-btn instagram">
+                <i class="fab fa-instagram"></i> Instagram
             </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Peppered Chicken -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/chicken.jpg" alt="Peppered Chicken" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Peppered Chicken</h3>
-                        <span class="text-primary font-semibold">₱200.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="7" data-name="Peppered Chicken" data-price="200.00" data-image="peppered-chicken">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Peppered Beef -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/beef.jpg" alt="Peppered Beef" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Peppered Beef <span style="font-size: 0.7em; color: rgba(0, 0, 0, 0.3);">(2px)</span></h3>
-                        <span class="text-primary font-semibold">₱200.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="8" data-name="Peppered Beef" data-price="200.00" data-image="peppered-beef">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Egg -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/eggs.jpg" alt="Egg" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Egg</h3>
-                        <span class="text-primary font-semibold">₱20.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="9" data-name="Egg" data-price="20.00" data-image="egg">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Grilled Fish -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/grilled-fish.jpg" alt="Grilled Fish" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Grilled Fish</h3>
-                        <span class="text-primary font-semibold">₱800.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="10" data-name="Grilled Fish" data-price="800.00" data-image="grilled-fish">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Beans Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6"">Beans</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Ewagoyin -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/ewagoyin.jpg" alt="Ewagoyin" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Ewagoyin</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="11" data-name="Ewagoyin" data-price="500.00" data-image="ewagoyin">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Beans Porridge -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/beans-and-plantain.jpg" alt="Beans Porridge" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Beans Porridge</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="12" data-name="Beans Porridge" data-price="400.00" data-image="beans-porridge">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- White Beans -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/whiite-beans.jpg" alt="White Beans" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">White Beans</h3>
-                                <span class="text-primary font-semibold">₱200.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="13" data-name="White Beans" data-price="200.00" data-image="white-beans">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
+            <button class="social-btn messenger">
+                <i class="fab fa-facebook-messenger"></i> Messenger
             </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Ewagoyin -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/ewagoyin.jpg" alt="Ewagoyin" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Ewagoyin</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="11" data-name="Ewagoyin" data-price="500.00" data-image="ewagoyin">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Beans Porridge -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/beans-and-plantain.jpg" alt="Beans Porridge" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Beans Porridge</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="12" data-name="Beans Porridge" data-price="400.00" data-image="beans-porridge">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- White Beans -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/whiite-beans.jpg" alt="White Beans" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">White Beans</h3>
-                        <span class="text-primary font-semibold">₱200.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="13" data-name="White Beans" data-price="200.00" data-image="white-beans">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Soup Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Soup</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Egusi Soup -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/egusi-soup.jpg" alt="Egusi Soup" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Egusi Soup</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="14" data-name="Egusi Soup" data-price="500.00" data-image="egusi-soup">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Okro Soup -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/okro-soup.jpg" alt="Okro Soup" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Okro Soup</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="15" data-name="Okro Soup" data-price="400.00" data-image="okro-soup">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Vegetable Soup -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/vegitable-soup.jpg" alt="Vegetable Soup" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Vegetable Soup</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="16" data-name="Vegetable Soup" data-price="500.00" data-image="vegitable-soup">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Egusi Soup -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/egusi-soup.jpg" alt="Egusi Soup" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Egusi Soup</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="14" data-name="Egusi Soup" data-price="500.00" data-image="egusi-soup">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Okro Soup -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/okro-soup.jpg" alt="Okro Soup" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Okro Soup</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="15" data-name="Okro Soup" data-price="400.00" data-image="okro-soup">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Vegetable Soup -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/vegitable-soup.jpg" alt="Vegetable Soup" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Vegetable Soup</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="16" data-name="Vegetable Soup" data-price="500.00" data-image="vegitable-soup">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Swallow Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Swallow</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Eba -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/eba.jpg" alt="Eba" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Eba</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="17" data-name="Eba" data-price="100.00" data-image="eba">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Wheat -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/wheat.png" alt="Wheat" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Wheat</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="18" data-name="Wheat" data-price="100.00" data-image="wheat">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Starch -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/starch.jpg" alt="Starch" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Starch</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="19" data-name="Starch" data-price="100.00" data-image="starch">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Eba -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/eba.jpg" alt="Eba" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Eba</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="17" data-name="Eba" data-price="100.00" data-image="eba">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Wheat -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/wheat.png" alt="Wheat" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Wheat</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="18" data-name="Wheat" data-price="100.00" data-image="wheat">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Starch -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/starch.jpg" alt="Starch" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Starch</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="19" data-name="Starch" data-price="100.00" data-image="starch">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Pasta Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Pasta</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Jollof Spaghetti -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/jollof-spagetti.jpg" alt="Jollof Spaghetti" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Jollof Spaghetti</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="20" data-name="Jollof Spaghetti" data-price="400.00" data-image="jollof-spagetti">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Alfredo -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/alfredo.jpg" alt="Alfredo" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Alfredo</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="21" data-name="Alfredo" data-price="500.00" data-image="alfredo">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Spaghetti Bolognese -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/spagetti-bolognese.jpg" alt="Spaghetti Bolognese" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Bolognese</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="22" data-name="Spaghetti Bolognese" data-price="500.00" data-image="spagetti-bolognese">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Beefaroni -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/beefaroni.jpg" alt="Beefaroni" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Beefaroni</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="23" data-name="Beefaroni" data-price="500.00" data-image="beefaroni">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Macaroni Salad -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/macaroni-salad.jpg" alt="Macaroni Salad" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Macaroni Salad</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="24" data-name="Macaroni Salad" data-price="500.00" data-image="macaroni-salad">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Jollof Spaghetti -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/jollof-spagetti.jpg" alt="Jollof Spaghetti" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Jollof Spaghetti</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="20" data-name="Jollof Spaghetti" data-price="400.00" data-image="jollof-spagetti">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Alfredo -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/alfredo.jpg" alt="Alfredo" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Alfredo</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="21" data-name="Alfredo" data-price="500.00" data-image="alfredo">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Spaghetti Bolognese -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/spagetti-bolognese.jpg" alt="Spaghetti Bolognese" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Bolognese</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="22" data-name="Spaghetti Bolognese" data-price="500.00" data-image="spagetti-bolognese">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Beefaroni -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/beefaroni.jpg" alt="Beefaroni" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Beefaroni</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="23" data-name="Beefaroni" data-price="500.00" data-image="beefaroni">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Macaroni Salad -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/macaroni-salad.jpg" alt="Macaroni Salad" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Macaroni Salad</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="24" data-name="Macaroni Salad" data-price="500.00" data-image="macaroni-salad">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Sides Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left:15px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Sides</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Moi-Moi -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/moimoi.jpg" alt="Moi-Moi" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Moi-Moi</h3>
-                                <span class="text-primary font-semibold">₱200.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="25" data-name="Moi-Moi" data-price="200.00" data-image="moi-moi">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fried Plantain -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/fried-plantain.jpg" alt="Fried Plantain" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Fried Plantain</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="26" data-name="Fried Plantain" data-price="100.00" data-image="fried-plantain">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Puff-puff -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/cake.jpg" alt="Puff-puff" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Puff-puff</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="27" data-name="Puff-puff" data-price="100.00" data-image="puff-puff">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Egg-roll -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/egg-roll.jpg" alt="Egg-roll" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Egg-roll</h3>
-                                <span class="text-primary font-semibold">₱100.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="28" data-name="Egg-roll" data-price="100.00" data-image="egg-roll">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Moi-Moi -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/moimoi.jpg" alt="Moi-Moi" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Moi-Moi</h3>
-                        <span class="text-primary font-semibold">₱200.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="25" data-name="Moi-Moi" data-price="200.00" data-image="moi-moi">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Fried Plantain -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/fried-plantain.jpg" alt="Fried Plantain" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Fried Plantain</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="26" data-name="Fried Plantain" data-price="100.00" data-image="fried-plantain">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Puff-puff -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/cake.jpg" alt="Puff-puff" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Puff-puff</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="27" data-name="Puff-puff" data-price="100.00" data-image="puff-puff">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Egg-roll -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/egg-roll.jpg" alt="Egg-roll" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Egg-roll</h3>
-                        <span class="text-primary font-semibold">₱100.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="28" data-name="Egg-roll" data-price="100.00" data-image="egg-roll">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Wraps Section -->
-<section class="mb-12">
-    <div class="dish-header" style="border-bottom: 2px solid #FF6B35; padding-left: 12px; margin-bottom: 20px; height: 50px; padding-top: 10px;">
-        <h2 class="text-2xl font-['Pacifico'] mb-6">Wraps</h2>
-    </div>
-    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Mobile swipe container -->
-        <div class="lg:hidden relative overflow-hidden">
-            <div class="swipe-container flex overflow-x-auto pb-4 space-x-4 px-4" style="scroll-snap-type: x mandatory;">
-                <!-- Beef Shawarma -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/beef-shawama.jpg" alt="Beef Shawarma" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Beef Shawarma</h3>
-                                <span class="text-primary font-semibold">₱500.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="29" data-name="Beef Shawarma" data-price="500.00" data-image="beef-shawarma">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Chicken Shawarma -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/chicken-shawama.jpg" alt="Chicken Shawarma" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Chicken Shawarma</h3>
-                                <span class="text-primary font-semibold">₱400.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="30" data-name="Chicken Shawarma" data-price="400.00" data-image="chicken-shawarma">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Spring Roll -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/spring-roll.jpg" alt="Spring Roll" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Spring Roll</h3>
-                                <span class="text-primary font-semibold">₱300.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="31" data-name="Spring Roll" data-price="300.00" data-image="spring-roll">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Samosa -->
-                <div class="flex-shrink-0 w-64" style="scroll-snap-align: start; width: 100vw;">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                            <img src="./images/samosa.jpg" alt="Samosa" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-2" style="display: block;">
-                                <h3 class="text-lg font-semibold">Samosa</h3>
-                                <span class="text-primary font-semibold">₱300.00</span>
-                            </div>
-                            <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="32" data-name="Samosa" data-price="300.00" data-image="samosa">
-                                <i class="ri-shopping-cart-line mr-2"></i>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation arrows -->
-            <button class="swipe-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-left-s-line text-primary text-xl"></i>
-            </button>
-            <button class="swipe-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
-                <i class="ri-arrow-right-s-line text-primary text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Desktop grid -->
-        <div class="hidden lg:grid lg:grid-cols-4 lg:gap-8" style="width: 80vw;">
-            <!-- Beef Shawarma -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/beef-shawama.jpg" alt="Beef Shawarma" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Beef Shawarma</h3>
-                        <span class="text-primary font-semibold">₱500.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="29" data-name="Beef Shawarma" data-price="500.00" data-image="beef-shawarma">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Chicken Shawarma -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/chicken-shawama.jpg" alt="Chicken Shawarma" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Chicken Shawarma</h3>
-                        <span class="text-primary font-semibold">₱400.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="30" data-name="Chicken Shawarma" data-price="400.00" data-image="chicken-shawarma">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Spring Roll -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/spring-roll.jpg" alt="Spring Roll" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Spring Roll</h3>
-                        <span class="text-primary font-semibold">₱300.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="31" data-name="Spring Roll" data-price="300.00" data-image="spring-roll">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Samosa -->
-            <div class="flex flex-col items-center text-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4 transform hover:scale-105 transition-transform duration-300">
-                    <img src="./images/samosa.jpg" alt="Samosa" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start mb-2" style="display: block;">
-                        <h3 class="text-lg font-semibold">Samosa</h3>
-                        <span class="text-primary font-semibold">₱300.00</span>
-                    </div>
-                    <button class="add-to-cart w-full py-2 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center" style="width:150px;" data-id="32" data-name="Samosa" data-price="300.00" data-image="samosa">
-                        <i class="ri-shopping-cart-line mr-2"></i>
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Checkout Modal -->
-    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto" style="margin-top: 40px;">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-semibold">Checkout</h2>
-                    <button id="closeCheckout" class="text-gray-500 hover:text-primary">
-                        <i class="ri-close-line ri-lg"></i>
-                    </button>
-                </div>
-                <form id="checkoutForm" class="space-y-6">
-                    <!-- Order Summary -->
-                    <div class="bg-gray-50 p-4 rounded-lg mb-6 z-1002">
-                        <h3 class="font-semibold mb-4">Order Summary</h3>
-                        <div id="checkoutItems" class="space-y-3 mb-4"></div>
-                        <div class="border-t pt-4">
-                            <div class="flex justify-between font-semibold">
-                                <span>Total:</span>
-                                <span id="checkoutTotal">₱0.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Delivery Information -->
-                    <div>
-                        <h3 class="font-semibold mb-4">Delivery Information</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" name="fullName" required
-                                       class="w-full px-4 py-2 border border-gray-200 rounded focus:outline-none focus:border-primary">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" name="phone" required
-                                       class="w-full px-4 py-2 border border-gray-200 rounded focus:outline-none focus:border-primary">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input type="email" name="email" required
-                                       class="w-full px-4 py-2 border border-gray-200 rounded focus:outline-none focus:border-primary">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
-                                <textarea name="address" required rows="3"
-                                          class="w-full px-4 py-2 border border-gray-200 rounded focus:outline-none focus:border-primary"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Payment Method -->
-                    <div>
-                        <h3 class="font-semibold mb-4">Payment Method</h3>
-                        <div class="space-y-3">
-                            <label class="flex items-center p-4 border border-gray-200 rounded cursor-pointer hover:border-primary">
-                                <input type="radio" name="paymentMethod" value="credit" required class="mr-3">
-                                <span class="flex items-center">
-                                    <img src="./images/gcash.png" width="40" height="40" alt="gcsh-logo" class="ri-bank-card-line ri-lg mr-2"/>
-                                    Gcash
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    <!-- Submit Button -->
-                    <button type="submit" class="w-full py-3 bg-primary text-white rounded-button hover:bg-primary/90 flex items-center justify-center">
-                        <i class="ri-secure-payment-line mr-2"></i>
-                        Place Order
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
-</main>
 
-<!-- Modern Contact Section -->
+
+ 
 <div id="contactme"></div>
-<section id="contact " class="contact-section">
-  <div class="contact-wrapper" >
+  <br/>
+  <br/>
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="contact-wrapper">
     <div class="contact-header">
       <h1 class="contact-title">Get In Touch</h1>
-      <p class="contact-subtitle">We'd love to hear from you! Whether you have a question, want to place an order, or need catering info — reach out anytime.</p>
+      <p class="contact-subtitle">We'd love to hear from you! Whether you have a question, or want to place an order — reach out anytime.</p>
       <div class="divider"></div>
     </div>
-
-    <div class="contact-container">
-      <!-- Contact Form -->
-      <form id="contactForm" class="contact-form">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required class="modern-input">
-          <span class="input-focus"></span>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required class="modern-input">
-          <span class="input-focus"></span>
-        </div>
-        
-        <div class="form-group">
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" rows="5" required class="modern-textarea" style="color: black;"></textarea>
-          <span class="input-focus"></span>
-        </div>
-        
-        <button type="submit" class="modern-button">
-          <span>Send Message</span>
-          <svg viewBox="0 0 24 24" width="20" height="20" class="send-icon">
-            <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path>
-          </svg>
-        </button>
-      </form>
-      
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path fill="#ff6b35" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"></path>
-            </svg>
-          </div>
-          <div class="info-content">
-            <h3>Email Us</h3>
-            <a href="mailto:Anniesfoodempire@gmail.com">Anniesfoodempire@gmail.com</a>
-          </div>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path fill="#ff6b35" d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"></path>
-            </svg>
-          </div>
-          <div class="info-content">
-            <h3>Call Us</h3>
-            <a href="tel:+6900000000">(+69) 0000-0000</a>
-          </div>
-        </div>
-        <!-- From Uiverse.io by wilsondesouza --> 
-   <ul class="example-2" style="justify-content: left;">
-    <div><h2 style="font-weight: 600; font-size: 1.4em; color: #ff6b35;">Follow Us</h2></div>
-    <br>
-    <li class="icon-content">
-      <a
-        data-social="whatsapp"
-        aria-label="Whatsapp"
-        href="https://api.whatsapp.com/send?phone=+112067101079&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
-      >
-        <div class="filled"></div>
-        <svg
-          xml:space="preserve"
-          viewBox="0 0 24 24"
-          class="bi bi-whatsapp"
-          fill="currentColor"
-          height="24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="currentColor"
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
-          ></path>
-        </svg>
-      </a>
-      <div class="tooltip">Whatsapp</div>
-    </li>
-    <li class="icon-content">
-      <a
-        data-social="facebook"
-        aria-label="Facebook"
-        href="https://www.facebook.com/"
-      >
-        <div class="filled"></div>
-        <svg
-          xml:space="preserve"
-          viewBox="0 0 24 24"
-          class="bi bi-facbook"
-          fill="currentColor"
-          height="24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="currentColor"
-            d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"
-          ></path>
-        </svg>
-      </a>
-      <div class="tooltip">Facebook</div>
-    </li>
-    <li class="icon-content">
-      <a
-        data-social="instagram"
-        aria-label="Instagram"
-        href="https://www.instagram.com/"
-      >
-        <div class="filled"></div>
-        <svg
-          xml:space="preserve"
-          viewBox="0 0 16 16"
-          class="bi bi-instagram"
-          fill="currentColor"
-          height="16"
-          width="16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="currentColor"
-            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
-          ></path>
-        </svg>
-      </a>
-      <div class="tooltip">Instagram</div>
-    </li>
-  </ul>
+    <div class="form-follow">
+    <form id="form" class="vibrant-form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="your.email@example.com">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" placeholder="Your message ....."></textarea>
+      </div>
+      <input type="submit" id="button" value="Send Message">
+    </form>
   
-        </div>
+
+
+
+
+
+  <div class="contact-info">
+    <div class="info-card">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path fill="#ff6b35" d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"></path>
+        </svg>
+      </div>
+      <div class="info-content">
+        <h3>Call Us</h3>
+        <a href="tel:+6900000000">(+63) 919-851-7845</a>
       </div>
     </div>
-  </div>
+</div>
+</div> 
 </section>
+<!--contact form ends  -->
 
-<!-- Modern Footer -->
+
+<!-- Footer -->
 <footer class="modern-footer">
   <div class="footer-content">
     <div class="footer-logo">
-      <span class="logo-text">Annie's <span class="logo-highlight food-pulse">food</span> Empire</span>
-    </div>
+     <a href=".index.html">
+      <span class="logo-text"  style="font-family: cursive, sans-serif;">Annie's<i class="fas fa-utensils food-pulse" style="color: black;"></i><br><span class="logo-highlight food-pulse">food</span> Empire</span>
+     </a>
+      </div>
     
     <div class="footer-links">
       <a href="./index.html">Home</a>
@@ -1844,15 +331,81 @@
     <div class="footer-social">
       <p>Follow our culinary journey</p>
       <div class="social-icons">
-        <a href="#" aria-label="WhatsApp" class="social-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.42-.58 1.62-1.18.2-.56.2-1.05.14-1.16-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.43.13-.14.17-.24.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"></path></svg>
-        </a>
-        <a href="#" aria-label="Facebook" class="social-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"></path></svg>
-        </a>
-        <a href="#" aria-label="Instagram" class="social-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"></path></svg>
-        </a>
+         <!-- From Uiverse.io by wilsondesouza --> 
+ <ul class="example-2">
+  <li class="icon-content">
+    <a
+      data-social="whatsapp"
+      aria-label="Whatsapp"
+      href="https://api.whatsapp.com/send?phone=+639198517845&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 24 24"
+        class="bi bi-whatsapp"
+        fill="currentColor"
+        height="24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Whatsapp</div>
+  </li>
+  <li class="icon-content">
+    <a
+      data-social="facebook"
+      aria-label="Facebook"
+      href="https://www.facebook.com/"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 24 24"
+        class="bi bi-facbook"
+        fill="currentColor"
+        height="24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Facebook</div>
+  </li>
+  <li class="icon-content">
+    <a
+      data-social="instagram"
+      aria-label="Instagram"
+      href="https://www.instagram.com/"
+    >
+      <div class="filled"></div>
+      <svg
+        xml:space="preserve"
+        viewBox="0 0 16 16"
+        class="bi bi-instagram"
+        fill="currentColor"
+        height="16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+        ></path>
+      </svg>
+    </a>
+    <div class="tooltip">Instagram</div>
+  </li>
+</ul> 
       </div>
     </div>
   </div>
@@ -1860,20 +413,43 @@
   <div class="footer-bottom">
     <p>&copy; 2025 Annie's Food Empire. All rights reserved.</p>
     <div class="legal-links">
-      <a href="./privacy-policy.html" style="text-decoration: underline;">Privacy Policy</a>
-      <a href="./terms-of-service.html" style="text-decoration: underline;">Terms of Service</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms-of-service.html">Terms of Service</a>
     </div>
   </div>
 </footer>
 
-<!-- Confirmation Message -->
-<div id="confirmationMsg" class="confirmation-message">
-  <svg viewBox="0 0 24 24" width="24" height="24" class="confirmation-icon">
-    <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
-  </svg>
-  <span>Your message has been sent successfully!</span>
-</div>
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init('m-PjQiXKqk1CoHkpM');
+  
+  document.getElementById('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const button = document.getElementById('button');
+    const originalText = button.value;
+    
+    button.value = 'Sending...';
+    button.disabled = true;
+    
+    emailjs.sendForm('service_o6onhqr', 'template_m5jlqkl', this)
+      .then(() => {
+        button.value = 'Message Sent!';
+        this.reset();
+        setTimeout(() => {
+          button.value = originalText;
+          button.disabled = false;
+        }, 2000);
+      }, (error) => {
+        button.value = 'Error! Try Again';
+        console.error('Failed:', error);
+        setTimeout(() => {
+          button.value = originalText;
+          button.disabled = false;
+        }, 2000);
+      });
+  });
+</script>
 <script src="./checkout.js"></script>
 </body>
 </html>
