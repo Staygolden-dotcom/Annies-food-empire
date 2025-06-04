@@ -1,473 +1,903 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-link");
-  const sidebarToggle = document.getElementById("sidebarToggle");
-  const closeButton = document.getElementById("closeButton");
-  const sidebar = document.getElementById("sidebar");
-  const cartToggle = document.getElementById("cartToggle");
-  const cartPreview = document.getElementById("cartPreview");
-  const closeCart = document.getElementById("closeCart");
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
-  const cartCount = document.getElementById("cartCount");
-  const checkoutBtn = document.getElementById("checkoutBtn");
-  const checkoutModal = document.getElementById("checkoutModal");
-  const closeCheckout = document.getElementById("closeCheckout");
-  const checkoutItems = document.getElementById("checkoutItems");
-  const checkoutTotal = document.getElementById("checkoutTotal");
-  const checkoutForm = document.getElementById("checkoutForm");
-  let cart = [];
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      navLinks.forEach((item) => item.classList.remove("active"));
-      this.classList.add("active");
-      if (window.innerWidth < 1024) {
-        closeSidebar();
+// navigation
+document.addEventListener("DOMContentLoaded", () => {
+  class Navigation {
+    constructor() {
+      this.selectors = {
+        hamburger: ".hamburger",
+        mobileMenu: ".mobile-menu-overlay",
+        closeButton: ".close-menu-btn",
+        navLinks: ".mobile-nav-link",
+        overlay: ".overlay",
+      };
+
+      this.state = {
+        isMenuOpen: false,
+      };
+
+      this.init();
+    }
+
+    init() {
+      this.cacheDomElements();
+      this.createOverlay();
+      this.setupEventListeners();
+    }
+
+    cacheDomElements() {
+      this.dom = {};
+      for (const [key, value] of Object.entries(this.selectors)) {
+        this.dom[key] = document.querySelector(value);
+      }
+      this.dom.navLinks = document.querySelectorAll(this.selectors.navLinks);
+    }
+
+    createOverlay() {
+      this.overlay = document.createElement("div");
+      this.overlay.className = "overlay";
+      document.body.appendChild(this.overlay);
+    }
+
+    setupEventListeners() {
+      // Toggle menu
+      this.dom.hamburger.addEventListener("click", this.toggleMenu.bind(this));
+      this.dom.closeButton.addEventListener(
+        "click",
+        this.toggleMenu.bind(this)
+      );
+      this.overlay.addEventListener("click", this.toggleMenu.bind(this));
+
+      // Close menu when clicking nav links
+      this.dom.navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (!link.classList.contains("has-dropdown")) {
+            this.closeMenu();
+          }
+        });
+      });
+
+      // Handle keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && this.state.isMenuOpen) {
+          this.closeMenu();
+        }
+      });
+
+      // Scroll effects
+      window.addEventListener("scroll", this.handleScroll.bind(this));
+    }
+
+    toggleMenu() {
+      if (this.state.isMenuOpen) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
+      }
+    }
+
+    openMenu() {
+      this.dom.hamburger.classList.add("active");
+      this.dom.mobileMenu.classList.add("active");
+      this.overlay.classList.add("active");
+      document.body.classList.add("no-scroll");
+      this.dom.hamburger.setAttribute("aria-expanded", "true");
+      this.state.isMenuOpen = true;
+
+      // Trap focus inside menu when open
+      this.trapFocus(this.dom.mobileMenu);
+    }
+
+    closeMenu() {
+      this.dom.hamburger.classList.remove("active");
+      this.dom.mobileMenu.classList.remove("active");
+      this.overlay.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+      this.dom.hamburger.setAttribute("aria-expanded", "false");
+      this.state.isMenuOpen = false;
+    }
+
+    handleScroll() {
+      const header = document.querySelector(".header");
+      header.style.boxShadow =
+        window.scrollY > 50
+          ? "0 4px 12px rgba(0, 0, 0, 0.1)"
+          : "0 2px 10px rgba(0, 0, 0, 0.1)";
+    }
+
+    trapFocus(element) {
+      const focusableElements = element.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (firstFocusable) {
+        firstFocusable.focus();
+      }
+
+      element.addEventListener("keydown", (e) => {
+        if (e.key !== "Tab") return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+  }
+
+  // Initialize navigation
+  new Navigation();
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute("href");
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Update URL without jumping
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
       }
     });
   });
-  function checkWindowSize() {
-    if (window.innerWidth >= 1024) {
-      closeSidebar();
-    }
+});
+
+
+
+// menu and cart system
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Menu Data
+  const menuData = {
+    rice_Fiesta: [
+      {
+        id: 1,
+        name: "Jollof Rice",
+        description: "Toasted bread with tomatoes, garlic, and basil",
+        price: 500.0,
+        image: "./images/jollof-rice-chiken-plantain.jpg",
+      },
+      {
+        id: 2,
+        name: "Fried Rice",
+        description: "Crispy fried squid with lemon aioli",
+        price: 500.0,
+        image: "./images/fried-rice.jpg",
+      },
+      {
+        id: 3,
+        name: "Native Rice",
+        description: "Fresh mozzarella, tomatoes, and basil",
+        price: 700.0,
+        image: "./images/native-rice.jpg",
+      },
+      {
+        id: 4,
+        name: "Coconut Fried Rice",
+        description: "8oz beef filet with mashed potatoes",
+        price: 500.0,
+        image: "./images/coconut-fried-rice.jpg",
+      },
+      {
+        id: 5,
+        name: "Rice and Stew",
+        description: "8oz beef filet with mashed potatoes",
+        price: 600.0,
+        image: "./images/rice-and-stew.jpg",
+      },
+      {
+        id: 6,
+        name: "Oriental Rice",
+        description: "8oz beef filet with mashed potatoes",
+        price: 700.0,
+        image: "./images/orientail-fried-rice.jpg",
+      },
+    ],
+    beans: [
+      {
+        id: 7,
+        name: "Ewagoyin",
+        description: "8oz beef filet with mashed potatoes",
+        price: 500.0,
+        image: "./images/ewagoyin.jpg",
+      },
+      {
+        id: 8,
+        name: "Beans Porridge",
+        description: "Atlantic salmon with lemon butter sauce",
+        price: 400.0,
+        image: "./images/beans-and-plantain.jpg",
+      },
+      {
+        id: 9,
+        name: "White Beans",
+        description: "Breaded chicken with marinara and cheese",
+        price: 200.0,
+        image: "./images/whiite-beans.jpg",
+      },
+    ],
+    soups: [
+      {
+        id: 10,
+        name: "Egusi Soup",
+        description: "Warm cake with molten center and ice cream",
+        price: 500.0,
+        image: "./images/egusi-soup.jpg",
+      },
+      {
+        id: 11,
+        name: "Vegitable Soup",
+        description: "Classic Italian coffee dessert",
+        price: 500.0,
+        image: "./images/vegitable-soup.jpg",
+      },
+      {
+        id: 12,
+        name: "Okro Soup",
+        description: "New York style with berry compote",
+        price: 400.0,
+        image: "./images/okro-soup.jpg",
+      },
+    ],
+    swallow: [
+      {
+        id: 13,
+        name: "Eba",
+        description: "Warm cake with molten center and ice cream",
+        price: 100.0,
+        image: "./images/eba.jpg",
+      },
+      {
+        id: 14,
+        name: "Wheat",
+        description: "Classic Italian coffee dessert",
+        price: 100.0,
+        image: "./images/wheat.png",
+      },
+      {
+        id: 15,
+        name: "Starch",
+        description: "New York style with berry compote",
+        price: 100.0,
+        image: "./images/starch.jpg",
+      },
+    ],
+    pastas: [
+      {
+        id: 16,
+        name: "Jollof Spaghetti",
+        description: "Glass of Cabernet Sauvignon",
+        price: 400.0,
+        image: "./images/jollof-spagetti.jpg",
+      },
+      {
+        id: 17,
+        name: "Alfredo",
+        description: "Local IPA from our partners",
+        price: 500.0,
+        image: "./images/alfredo.jpg",
+      },
+      {
+        id: 18,
+        name: "Spaghetti Bolognese",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 500.0,
+        image: "./images/spagetti-bolognese.jpg",
+      },
+      {
+        id: 19,
+        name: "Beefaroni",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 500.0,
+        image: "./images/beefaroni.jpg",
+      },
+      {
+        id: 20,
+        name: "Macaroni Salad",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 500.0,
+        image: "./images/macaroni-salad.jpg",
+      },
+    ],
+    proteins: [
+      {
+        id: 21,
+        name: "Peppered Chicken",
+        description: "Glass of Cabernet Sauvignon",
+        price: 200.0,
+        image: "./images/chicken.jpg",
+      },
+      {
+        id: 22,
+        name: "Peppered Beef (2px)",
+        description: "Local IPA from our partners",
+        price: 200,
+        image: "./images/beef.jpg",
+      },
+      {
+        id: 23,
+        name: "Egg",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 20.0,
+        image: "./images/eggs.jpg",
+      },
+      {
+        id: 24,
+        name: "Grilled Fish",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 1000.0,
+        image: "./images/grilled-fish.jpg",
+      },
+    ],
+    sides: [
+      {
+        id: 25,
+        name: "Moi-Moi",
+        description: "Glass of Cabernet Sauvignon",
+        price: 200.0,
+        image: "./images/moimoi.jpg",
+      },
+      {
+        id: 26,
+        name: "Fried Plantain",
+        description: "Local IPA from our partners",
+        price: 200.0,
+        image: "./images/fried-plantain.jpg",
+      },
+      {
+        id: 27,
+        name: "Puff-puff (8px)",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 200.0,
+        image: "./images/cake.jpg",
+      },
+      {
+        id: 28,
+        name: "Egg-roll (1px)",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 150.0,
+        image: "./images/egg-roll.jpg",
+      },
+    ],
+    wraps: [
+      {
+        id: 29,
+        name: "Beef shawarma",
+        description: "Glass of Cabernet Sauvignon",
+        price: 500.0,
+        image: "./images/beef-shawama.jpg",
+      },
+      {
+        id: 30,
+        name: "Chicken Shawarma",
+        description: "Local IPA from our partners",
+        price: 400.0,
+        image: "./images/chicken-shawama.jpg",
+      },
+      {
+        id: 31,
+        name: "Spring-roll (6px)",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 200.00,
+        image: "./images/spring-roll.jpg",
+      },
+      {
+        id: 32,
+        name: "Samosa (5px)",
+        description: "Seasonal cocktail with fresh ingredients",
+        price: 200.00,
+        image: "./images/spring-roll.jpg",
+      },
+    ],
+  };
+
+  // Cart State
+  let cart = [];
+  let swipers = {};
+
+  // DOM Elements
+  const elements = {
+    menuContent: document.querySelector(".menu-content"),
+    menuTabs: document.querySelectorAll(".menu-tab"),
+    cartSidebar: document.querySelector(".cart-sidebar"),
+    cartOverlay: document.querySelector(".cart-overlay"),
+    cartItems: document.querySelector(".cart-items"),
+    cartBtn: document.querySelector(".cart-btn"),
+    cartCount: document.querySelector(".cart-count"),
+    totalPrice: document.querySelector(".total-price"),
+    checkoutModal: document.querySelector(".checkout-modal"),
+    orderSummary: document.querySelector(".order-summary"),
+    finalTotal: document.querySelector(".final-total"),
+    closeCart: document.querySelector(".close-cart"),
+    checkoutBtn: document.querySelector(".checkout-btn"),
+    closeCheckout: document.querySelector(".close-checkout"),
+    whatsappBtn: document.querySelector(".social-btn.whatsapp"),
+    instagramBtn: document.querySelector(".social-btn.instagram"),
+    messengerBtn: document.querySelector(".social-btn.messenger"),
+  };
+
+  // Initialize Menu
+  function initMenu() {
+    elements.menuContent.innerHTML = "";
+
+    Object.keys(menuData).forEach((category) => {
+      const categoryEl = document.createElement("div");
+      categoryEl.className = `menu-category ${
+        category === "rice_Fiesta" ? "active" : ""
+      }`;
+      categoryEl.id = category;
+
+      const title = document.createElement("h2");
+      title.className = "category-title";
+      title.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+      categoryEl.appendChild(title);
+
+      const swiperEl = document.createElement("div");
+      swiperEl.className = `swiper ${category}-swiper`;
+      swiperEl.innerHTML = `
+              <div class="swiper-wrapper"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+          `;
+
+      const swiperWrapper = swiperEl.querySelector(".swiper-wrapper");
+      menuData[category].forEach((item) => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.innerHTML = `
+                  <div class="dish-card">
+                      <img src="${item.image}" alt="${
+          item.name
+        }" class="dish-image">
+                      <div class="dish-info">
+                          <h3 class="dish-name">${item.name}</h3>
+                          <p class="dish-desc">${item.description}</p>
+                          <div class="dish-footer">
+                              <span class="dish-price">₱${item.price.toFixed(
+                                2
+                              )}</span>
+                              <button class="add-to-cart" data-id="${item.id}">
+                                  <i class="fas fa-plus"></i> Add
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              `;
+        swiperWrapper.appendChild(slide);
+      });
+
+      categoryEl.appendChild(swiperEl);
+      elements.menuContent.appendChild(categoryEl);
+
+      swipers[category] = new Swiper(`.${category}-swiper`, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: `.${category}-swiper .swiper-button-next`,
+          prevEl: `.${category}-swiper .swiper-button-prev`,
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+      });
+    });
+
+    // Add to cart event delegation
+    document.addEventListener("click", function (e) {
+      if (e.target.closest(".add-to-cart")) {
+        const btn = e.target.closest(".add-to-cart");
+        const id = parseInt(btn.getAttribute("data-id"));
+        addToCart(id);
+      }
+    });
   }
-  window.addEventListener("resize", checkWindowSize);
-  function openSidebar() {
-    sidebar.classList.add("active");
+
+  // Setup Category Tabs
+  function setupCategoryTabs() {
+    elements.menuTabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        // Remove active class from all tabs
+        elements.menuTabs.forEach((t) => t.classList.remove("active"));
+
+        // Add active class to clicked tab
+        this.classList.add("active");
+
+        // Get category from data attribute
+        const category = this.getAttribute("data-category");
+
+        // Hide all menu categories
+        document.querySelectorAll(".menu-category").forEach((cat) => {
+          cat.classList.remove("active");
+        });
+
+        // Show selected category
+        document.getElementById(category).classList.add("active");
+      });
+    });
   }
-  function closeSidebar() {
-    sidebar.classList.remove("active");
+
+  // Setup Social Media Checkout
+  function setupSocialCheckout() {
+    // WhatsApp Button
+    document
+      .querySelector(".social-btn.whatsapp")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        const orderMessage = generateOrderMessage();
+        const isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          );
+
+        if (isMobile) {
+          const tempLink = document.createElement("a");
+          tempLink.href = `whatsapp://send?phone=639198517845&text=${encodeURIComponent(
+            orderMessage
+          )}`;
+          tempLink.target = "_blank";
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.location.href = `https://api.whatsapp.com/send?phone=639198517845&text=${encodeURIComponent(
+                orderMessage
+              )}`;
+            }
+          }, 1000);
+        } else {
+          window.open(
+            `https://web.whatsapp.com/send?phone=639198517845&text=${encodeURIComponent(
+              orderMessage
+            )}`,
+            "_blank"
+          );
+        }
+      });
+
+    // Instagram Button
+    document
+      .querySelector(".social-btn.instagram")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        const orderMessage = generateOrderMessage();
+        const isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          );
+
+        if (isMobile) {
+          // Try to open Instagram app directly
+          window.location.href = `instagram://direct-msg?text=${encodeURIComponent(
+            orderMessage
+          )}`;
+
+          // Fallback to web if app not installed
+          setTimeout(() => {
+            if (!document.hidden) {
+              navigator.clipboard
+                .writeText(orderMessage)
+                .then(() => {
+                  alert("Order copied! Please paste in Instagram");
+                  window.location.href =
+                    "https://www.instagram.com/direct/inbox/";
+                })
+                .catch(() => {
+                  prompt("Please copy this order:", orderMessage);
+                  window.location.href =
+                    "https://www.instagram.com/direct/inbox/";
+                });
+            }
+          }, 500);
+        } else {
+          navigator.clipboard
+            .writeText(orderMessage)
+            .then(() => {
+              alert(
+                "Order copied to clipboard! Please paste it in your Instagram message."
+              );
+              window.open("https://www.instagram.com/direct/new/", "_blank");
+            })
+            .catch(() => {
+              prompt(
+                "Please copy this order and paste it in Instagram:",
+                orderMessage
+              );
+              window.open("https://www.instagram.com/direct/new/", "_blank");
+            });
+        }
+      });
+
+    // Messenger Button
+    document
+      .querySelector(".social-btn.messenger")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        const orderMessage = generateOrderMessage();
+        const isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          );
+
+        if (isMobile) {
+          // Try to open Messenger app directly
+          window.location.href = `fb-messenger://user-thread/{your-page-id}?text=${encodeURIComponent(
+            orderMessage
+          )}`;
+
+          // Fallback to web if app not installed
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.location.href = `https://m.me/yourpageusername?text=${encodeURIComponent(
+                orderMessage
+              )}`;
+            }
+          }, 500);
+        } else {
+          window.open(
+            `https://m.me/yourpageusername?text=${encodeURIComponent(
+              orderMessage
+            )}`,
+            "_blank"
+          );
+        }
+      });
   }
-  function toggleCart() {
-    cartPreview.classList.toggle("translate-x-full");
-  }
-  function updateCart() {
-    cartItems.innerHTML = "";
-    checkoutItems.innerHTML = "";
-    let total = 0;
+
+  // Generate Order Message
+  function generateOrderMessage() {
+    let message = `🍽️ Order From Annie's Food Empire 🍽️\n\n`;
+    message += `📅 ${new Date().toLocaleString()}\n\n`;
+    message += `📋 Order Details:\n`;
+
     cart.forEach((item, index) => {
-      total += item.price * item.quantity;
-      // Cart preview item
+      message += `${index + 1}. ${item.name} x${item.quantity} - ₱${(
+        item.price * item.quantity
+      ).toFixed(2)}\n`;
+    });
+
+    const subtotal = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    const tax = subtotal * 0.0;
+    const total = subtotal + tax;
+
+    message += `\n💵 Subtotal: ₱${subtotal.toFixed(2)}\n`;
+    message += `🏷️ Tax (0%): ₱${tax.toFixed(2)}\n`;
+    message += `💰 Total: ₱${total.toFixed(2)}\n\n`;
+    message += `📛 Full Name:_____\n\n`;
+    message += `🚚 Delivery Address:_____\n\n`;
+    message += `☎️ Active Phone number:_____\n\n`;
+    message += `📝 Special Instructions: \n\n`;
+    message += `Thank you!`;
+
+    return message;
+  }
+
+  // Cart Functions
+  function addToCart(id) {
+    let itemToAdd = null;
+    for (const category in menuData) {
+      const foundItem = menuData[category].find((item) => item.id === id);
+      if (foundItem) {
+        itemToAdd = foundItem;
+        break;
+      }
+    }
+
+    if (!itemToAdd) return;
+
+    const existingItem = cart.find((item) => item.id === id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...itemToAdd, quantity: 1 });
+    }
+
+    updateCart();
+    toggleCart();
+  }
+
+  function updateCart() {
+    updateCartCount();
+    renderCartItems();
+    updateCartTotal();
+  }
+
+  function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    elements.cartCount.textContent = count;
+    elements.cartBtn.classList.add("bounce");
+    setTimeout(() => elements.cartBtn.classList.remove("bounce"), 500);
+  }
+
+  function renderCartItems() {
+    elements.cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+      elements.cartItems.innerHTML =
+        '<p style="text-align: center; padding: 2rem;">Your cart is empty</p>';
+      return;
+    }
+
+    cart.forEach((item) => {
       const cartItem = document.createElement("div");
-      cartItem.className = "flex items-center justify-between";
+      cartItem.className = "cart-item";
       cartItem.innerHTML = `
-              <div class="flex items-center flex-1">
-                  <div class="flex-1">
-                      <h4 class="font-medium">${item.name}</h4>
-                      <div class="text-sm text-gray-500">₱${item.price.toFixed(
-                        2
-                      )} × ${item.quantity}</div>
+              <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+              <div class="cart-item-details">
+                  <h4 class="cart-item-name">${item.name}</h4>
+                  <p class="cart-item-price">₱${item.price.toFixed(2)}</p>
+                  <div class="cart-item-controls">
+                      <button class="qty-btn decrease" data-id="${
+                        item.id
+                      }">-</button>
+                      <input type="number" class="cart-item-qty" value="${
+                        item.quantity
+                      }" min="1" data-id="${item.id}">
+                      <button class="qty-btn increase" data-id="${
+                        item.id
+                      }">+</button>
+                      <button class="remove-item" data-id="${item.id}">
+                          <i class="fas fa-trash"></i>
+                      </button>
                   </div>
               </div>
-              <div class="flex items-center gap-2">
-                  <button class="decrease-quantity w-6 h-6 flex items-center justify-center text-gray-500 hover:text-primary" data-index="${index}">
-                      <i class="ri-subtract-line"></i>
-                  </button>
-                  <span class="w-8 text-center">${item.quantity}</span>
-                  <button class="increase-quantity w-6 h-6 flex items-center justify-center text-gray-500 hover:text-primary" data-index="${index}">
-                      <i class="ri-add-line"></i>
-                  </button>
-                  <button class="remove-item w-6 h-6 flex items-center justify-center text-gray-500 hover:text-red-500" data-index="${index}">
-                      <i class="ri-delete-bin-line"></i>
-                  </button>
-              </div>
           `;
-      cartItems.appendChild(cartItem);
-      // Checkout item
-      const checkoutItem = document.createElement("div");
-      checkoutItem.className = "flex justify-between items-center";
-      checkoutItem.innerHTML = `
-              <div>
-                  <h4 class="font-medium">${item.name}</h4>
-                  <div class="text-sm text-gray-500">₱${item.price.toFixed(
-                    2
-                  )} × ${item.quantity}</div>
-              </div>
-              <div class="font-medium">₱${(item.price * item.quantity).toFixed(
-                2
-              )}</div>
-          `;
-      checkoutItems.appendChild(checkoutItem);
+      elements.cartItems.appendChild(cartItem);
     });
-    cartTotal.textContent = `₱${total.toFixed(2)}`;
-    checkoutTotal.textContent = `₱${total.toFixed(2)}`;
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    // Toggle checkout button state
-    checkoutBtn.disabled = cart.length === 0;
-    checkoutBtn.classList.toggle("opacity-50", cart.length === 0);
-    checkoutBtn.classList.toggle("cursor-not-allowed", cart.length === 0);
-  }
-  // Add to cart functionality
-  document.querySelectorAll(".add-to-cart").forEach((button) => {
-    button.addEventListener("click", () => {
-      const id = button.dataset.id;
-      const name = button.dataset.name;
-      const price = parseFloat(button.dataset.price);
 
-      const existingItem = cart.find((item) => item.id === id);
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({
-          id,
-          name,
-          price,
-          quantity: 1,
-        });
-      }
-
-      updateCart();
-      cartPreview.classList.remove("translate-x-full");
-    });
-  });
-  // Cart quantity controls
-  cartItems.addEventListener("click", (e) => {
-    const target = e.target.closest("button");
-    if (!target) return;
-    const index = parseInt(target.dataset.index);
-    if (target.classList.contains("increase-quantity")) {
-      cart[index].quantity += 1;
-    } else if (target.classList.contains("decrease-quantity")) {
-      if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-      }
-    } else if (target.classList.contains("remove-item")) {
-      cart.splice(index, 1);
-    }
-    updateCart();
-  });
-  // Checkout form submission
-  checkoutForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(checkoutForm);
-    const orderData = {
-      items: cart,
-      total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-      customer: {
-        name: formData.get("fullName"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        address: formData.get("address"),
-      },
-      paymentMethod: formData.get("paymentMethod"),
-    };
-    // Here you would typically send the order to your backend
-    console.log("Order placed:", orderData);
-    // Clear cart and close modal
-    cart = [];
-    updateCart();
-    checkoutModal.classList.add("hidden");
-    // Show success message
-    const successMessage = document.createElement("div");
-    successMessage.className =
-      "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50";
-    successMessage.innerHTML = `
-          <div class="flex items-center">
-              <i class="ri-checkbox-circle-line ri-lg mr-2"></i>
-              Order placed successfully!
-          </div>
-      `;
-    document.body.appendChild(successMessage);
-    // Remove success message after 3 seconds
-    setTimeout(() => {
-      successMessage.remove();
-    }, 3000);
-  });
-  // Event Listeners
-  sidebarToggle.addEventListener("click", openSidebar);
-  closeButton.addEventListener("click", closeSidebar);
-  cartToggle.addEventListener("click", toggleCart);
-  closeCart.addEventListener("click", toggleCart);
-
-  checkoutBtn.addEventListener("click", () => {
-    if (cart.length > 0) {
-      checkoutModal.classList.remove("hidden");
-      checkoutModal.classList.add("flex");
-      cartPreview.classList.add("translate-x-full");
-    }
-  });
-  closeCheckout.addEventListener("click", () => {
-    checkoutModal.classList.add("hidden");
-    checkoutModal.classList.remove("flex");
-  });
-  // Close modals when clicking outside
-  window.addEventListener("click", (e) => {
-    if (e.target === checkoutModal) {
-      checkoutModal.classList.add("hidden");
-      checkoutModal.classList.remove("flex");
-    }
-  });
-});
-
-
-// Contact form submission
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show success message
-    const notification = document.createElement("div");
-    notification.className = "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 flex items-center";
-    notification.innerHTML = `
-        <i class="ri-checkbox-circle-line ri-lg mr-2"></i>
-        Your message was sent successfully!
-    `;
-    document.body.appendChild(notification);
-    
-    // Remove notification after 5 seconds
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
-    
-    // Reset form
-    this.reset();
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize all swipe containers
-  const swipeContainers = document.querySelectorAll(".swipe-container");
-
-  swipeContainers.forEach((container) => {
-    let startX, startY;
-    let scrollLeft;
-    let isDown = false;
-    let isScrollingHorizontally = false;
-
-    // Touch events
-    container.addEventListener(
-      "touchstart",
-      (e) => {
-        const touch = e.touches[0];
-        startX = touch.pageX - container.offsetLeft;
-        startY = touch.pageY - container.offsetTop;
-        scrollLeft = container.scrollLeft;
-        isDown = true;
-        isScrollingHorizontally = false;
-        container.style.scrollBehavior = "auto";
-      },
-      { passive: false }
-    );
-
-    container.addEventListener(
-      "touchmove",
-      (e) => {
-        if (!isDown) return;
-
-        const touch = e.touches[0];
-        const x = touch.pageX - container.offsetLeft;
-        const y = touch.pageY - container.offsetTop;
-
-        // Calculate movement in both directions
-        const xDiff = Math.abs(x - startX);
-        const yDiff = Math.abs(y - startY);
-
-        // Determine scroll direction after initial movement
-        if (!isScrollingHorizontally && xDiff < 10 && yDiff < 10) {
-          return; // Ignore tiny movements
-        }
-
-        if (!isScrollingHorizontally) {
-          // Decide if we're scrolling horizontally or vertically
-          isScrollingHorizontally = xDiff > yDiff;
-        }
-
-        if (isScrollingHorizontally) {
-          // Horizontal scrolling - handle the swipe
-          e.preventDefault();
-          const walk = (x - startX) * 2;
-          container.scrollLeft = scrollLeft - walk;
+    // Add event listeners to cart controls
+    document.querySelectorAll(".decrease").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const id = parseInt(this.getAttribute("data-id"));
+        const item = cart.find((item) => item.id === id);
+        if (item.quantity > 1) {
+          item.quantity--;
         } else {
-          // Vertical scrolling - let the page handle it
-          return;
+          cart = cart.filter((item) => item.id !== id);
         }
-      },
-      { passive: false }
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll(".increase").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const id = parseInt(this.getAttribute("data-id"));
+        cart.find((item) => item.id === id).quantity++;
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll(".remove-item").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const id = parseInt(this.getAttribute("data-id"));
+        cart = cart.filter((item) => item.id !== id);
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll(".cart-item-qty").forEach((input) => {
+      input.addEventListener("change", function () {
+        const id = parseInt(this.getAttribute("data-id"));
+        const newQty = parseInt(this.value) || 1;
+        const item = cart.find((item) => item.id === id);
+        if (item) item.quantity = newQty;
+        updateCart();
+      });
+    });
+  }
+
+  function updateCartTotal() {
+    const total = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
     );
+    elements.totalPrice.textContent = `₱${total.toFixed(2)}`;
+    elements.finalTotal.textContent = `₱${total.toFixed(2)}`;
+  }
 
-    container.addEventListener("touchend", () => {
-      isDown = false;
-      isScrollingHorizontally = false;
-      container.style.scrollBehavior = "smooth";
-    });
+  // Toggle Functions
+  function toggleCart() {
+    elements.cartSidebar.classList.toggle("active");
+    elements.cartOverlay.classList.toggle("active");
+    document.body.classList.toggle("no-scroll");
+  }
 
-    // Mouse events for desktop testing
-    container.addEventListener("mousedown", (e) => {
-      isDown = true;
-      startX = e.pageX - container.offsetLeft;
-      startY = e.pageY - container.offsetTop;
-      scrollLeft = container.scrollLeft;
-      isScrollingHorizontally = false;
-      container.style.scrollBehavior = "auto";
-    });
+  function toggleCheckoutModal() {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
 
-    container.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
+    elements.checkoutModal.classList.toggle("active");
 
-      const x = e.pageX - container.offsetLeft;
-      const y = e.pageY - container.offsetTop;
-      const xDiff = Math.abs(x - startX);
-      const yDiff = Math.abs(y - startY);
-
-      if (!isScrollingHorizontally && xDiff < 5 && yDiff < 5) {
-        return;
-      }
-
-      if (!isScrollingHorizontally) {
-        isScrollingHorizontally = xDiff > yDiff;
-      }
-
-      if (isScrollingHorizontally) {
-        e.preventDefault();
-        const walk = (x - startX) * 2;
-        container.scrollLeft = scrollLeft - walk;
-      }
-    });
-
-    container.addEventListener("mouseup", () => {
-      isDown = false;
-      isScrollingHorizontally = false;
-      container.style.scrollBehavior = "smooth";
-    });
-
-    container.addEventListener("mouseleave", () => {
-      isDown = false;
-      isScrollingHorizontally = false;
-    });
-
-    // Navigation arrows functionality
-    const prevBtn = container.parentElement.querySelector(".swipe-prev");
-    const nextBtn = container.parentElement.querySelector(".swipe-next");
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        container.scrollBy({
-          left: -300,
-          behavior: "smooth",
-        });
+    if (elements.checkoutModal.classList.contains("active")) {
+      elements.orderSummary.innerHTML = "";
+      cart.forEach((item) => {
+        const orderItem = document.createElement("div");
+        orderItem.className = "order-item";
+        orderItem.innerHTML = `
+                  <div>
+                      <span class="order-item-name">${item.name}</span>
+                      <span class="order-item-qty">x${item.quantity}</span>
+                  </div>
+                  <span class="order-item-price">₱${(
+                    item.price * item.quantity
+                  ).toFixed(2)}</span>
+              `;
+        elements.orderSummary.appendChild(orderItem);
       });
     }
+  }
 
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        container.scrollBy({
-          left: 300,
-          behavior: "smooth",
-        });
-      });
-    }
-  });
-});
-// Checkout form submission
-checkoutForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  // Initialize Everything
+  function init() {
+    initMenu();
+    setupCategoryTabs();
+    setupSocialCheckout();
 
-    const formData = new FormData(checkoutForm);
-    const orderData = {
-        items: cart,
-        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-        customer: {
-            name: formData.get("fullName"),
-            phone: formData.get("phone"),
-            email: formData.get("email"),
-            address: formData.get("address"),
-        },
-        paymentMethod: formData.get("paymentMethod"),
-    };
-    
-    // Here you would typically send the order to your backend
-    console.log("Order placed:", orderData);
-    
-    // Clear cart and close modal
-    cart = [];
-    updateCart();
-    checkoutModal.classList.add("hidden");
-    checkoutModal.classList.remove("flex");
-    
-    // Show success message
-    showNotification("Order placed successfully!", "success");
-});
-
-function showNotification(message, type = "success") {
-    const notification = document.createElement("div");
-    notification.className = `fixed top-4 right-4 px-6 py-3 rounded shadow-lg z-50 flex items-center animate-fade-in-up ${
-        type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
-    }`;
-    notification.innerHTML = `
-        <i class="ri-${type === "success" ? "checkbox-circle" : "close-circle"}line ri-lg mr-2"></i>
-        ${message}
-    `;
-    document.body.appendChild(notification);
-    
-    // Remove notification after 5 seconds
-    setTimeout(() => {
-        notification.classList.add("animate-fade-out");
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 5000);
-}
-// Reusable notification function with mobile support
-function showNotification(message, type = "success") {
-    const notification = document.createElement("div");
-    notification.className = `fixed z-50 px-6 py-3 rounded shadow-lg flex items-center ${
-        type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
-    }`;
-    
-    // Mobile positioning (centered at bottom)
-    notification.className += ' bottom-4 left-4 right-4 mx-auto max-w-md';
-    // Desktop positioning (top-right)
-    if (window.innerWidth >= 768) {
-        notification.className = notification.className.replace('bottom-4 left-4 right-4', 'top-4 right-4');
-    }
-
-    notification.innerHTML = `
-        <i class="ri-${type === "success" ? "checkbox-circle" : "close-circle"}line ri-lg mr-2"></i>
-        ${message}
-    `;
-    document.body.appendChild(notification);
-    
-    // Add touch event to dismiss notification
-    notification.addEventListener('touchstart', () => {
-        notification.remove();
+    // Cart Button
+    elements.cartBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleCart();
     });
-    
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 5000);
-}
 
-// Contact form submission with mobile support
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show success message
-    showNotification("Your message was sent successfully!");
-    
-    // Reset form
-    this.reset();
-    
-    // Prevent keyboard from staying open on mobile
-    if (document.activeElement) {
-        document.activeElement.blur();
-    }
-});
+    // Overlay Click
+    elements.cartOverlay.addEventListener("click", function (e) {
+      if (e.target === elements.cartOverlay) {
+        toggleCart();
+      }
+    });
 
-// Make sure the form is mobile-friendly
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        // Prevent zooming on input focus for mobile
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.fontSize = '16px'; // Prevent mobile zoom
-            });
-        });
-    }
+    // Close Cart Button
+    elements.closeCart.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleCart();
+    });
+
+    // Checkout Button
+    elements.checkoutBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleCheckoutModal();
+    });
+
+    // Close Checkout Modal
+    elements.closeCheckout.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleCheckoutModal();
+    });
+
+    // Close modal when clicking outside
+    elements.checkoutModal.addEventListener("click", function (e) {
+      if (e.target === elements.checkoutModal) {
+        toggleCheckoutModal();
+      }
+    });
+  }
+
+  // Start the application
+  init();
 });
