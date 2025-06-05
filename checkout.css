@@ -1153,11 +1153,11 @@ ul {
 .swiper-button-next,
 .swiper-button-prev {
     width: 50px;
-    height: 50px;
+    height: 40px;
     transition: all 0.3s ease;
-    background: whitesmoke;
+    background: transparent;
     border-radius: 50%;
-    
+    border: 2px solid black;
 }
 
 .menu-container .swiper-button-next::after,.menu-container 
