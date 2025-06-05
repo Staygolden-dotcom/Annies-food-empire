@@ -511,9 +511,9 @@ ul {
   height: 100%;
 }
 
-.example-2 .icon-content a[data-social="whatsapp"] .filled,
-.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
-  background-color: #128c7e;
+.example-2 .icon-content a[data-social="tiktok"] .filled,
+.example-2 .icon-content a[data-social="tiktok"] ~ .tooltip {
+  background-color: black;
 }
 
 .example-2 .icon-content a[data-social="facebook"] .filled,
@@ -532,10 +532,7 @@ ul {
     #fd1f1f
   );
 }
-.example-2 .icon-content a[data-social="youtube"] .filled,
-.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
-  background-color: #ff0000;
-}
+
 /* Nav ends */
 
 
