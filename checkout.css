@@ -1157,7 +1157,6 @@ ul {
     transition: all 0.3s ease;
     background: transparent;
     border-radius: 50%;
-    border: 2px solid black;
 }
 
 .menu-container .swiper-button-next::after,.menu-container 
@@ -1189,22 +1188,6 @@ ul {
     opacity: 0.5;
     pointer-events: none;
 }
-/* Add this to fix potential z-index issues */
-/* .navbar {
-  z-index: 1000;
-}
-.cart-sidebar {
-  z-index: 1001;
-}
-.cart-overlay {
-  z-index: 1000;
-}
-.checkout-modal {
-  z-index: 1002;
-}
-.floating-cart {
-  z-index: 999;
-} */
 
 
 /* contact form */
