@@ -234,11 +234,11 @@ body {
 }
 
 .mobile-nav-link.active {
-  color: var(--primary-color);
+  color:  #ff8a00;
 }
 
 .mobile-nav-link:hover {
-  color: var(--primary-color);
+  color:  #ff8a00;
 }
 
 .mobile-nav-icon {
