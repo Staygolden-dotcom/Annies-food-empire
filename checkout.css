@@ -1515,6 +1515,7 @@ input[type="submit"] { animation: fadeIn 0.5s ease 0.4s forwards; }
 
 .legal-links a:hover {
   color: #2d2d2d;
+  text-decoration: underline;
 }
 
 
