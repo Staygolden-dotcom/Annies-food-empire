@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
       name: "Jollof Rice",
       description:
         "Flavorful Jollof rice cooked in  rich sauce with spices.",
-      price: "₱400.00",
+      price: "₱500.00",
       image: "./images/jollof-rice-chiken-plantain.jpg",
       badge: "Chef's Pick",
     },
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description:
         "Marinated chicken wrapped in pita bread with rich sauce, and vegetables.",
       price: "₱400.00",
-      image: "./images/chicken-shawama.jpg",
+      image: "./images/chicken-shawarma.jpg",
       badge: "Wrap",
     },
     {
