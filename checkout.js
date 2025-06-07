@@ -219,6 +219,22 @@ document.addEventListener("DOMContentLoaded", function () {
         image: "./images/white-rice.jpg",
       },
     ],
+    sauce: [
+      {
+        id: 14,
+        name: "Ofada Sauce",
+        description: "A bold, aromatic sauce made with locust beans (iru), assorted meats, and fiery peppers, simmered in rich palm oil for an earthy, spicy kick.",
+        price: 700.0,
+        image: "./images/ofada-sauce.jpg",
+      },
+      {
+        id: 15,
+        name: "Chicken Curry",
+        description: "Tender chicken pieces simmered in a fragrant blend of turmeric, ginger, garlic, and rich coconut milk for a creamy, aromatic dish.",
+        price: 600.0,
+        image: "./images/chicken-curry.jpg",
+      },
+    ],
     beans: [
       {
         id: 8,
@@ -263,22 +279,6 @@ document.addEventListener("DOMContentLoaded", function () {
         description: "Nutrient-rich delight made with fresh okra, assorted meats/fish, and aromatic spices, simmered to perfection in a flavorful broth.",
         price: 500.0,
         image: "./images/okro-soup.jpg",
-      },
-    ],
-    sauce: [
-      {
-        id: 14,
-        name: "Ofada Sauce",
-        description: "A bold, aromatic sauce made with locust beans (iru), assorted meats, and fiery peppers, simmered in rich palm oil for an earthy, spicy kick.",
-        price: 700.0,
-        image: "./images/ofada-sauce.jpg",
-      },
-      {
-        id: 15,
-        name: "Chicken Curry",
-        description: "Tender chicken pieces simmered in a fragrant blend of turmeric, ginger, garlic, and rich coconut milk for a creamy, aromatic dish.",
-        price: 600.0,
-        image: "./images/chicken-curry.jpg",
       },
     ],
     swallow: [
@@ -403,8 +403,8 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: 32,
         name: "Small chops",
-        description: "A tray containing everything. puff-puff, samosa, spring-roll, and peppered meat.",
-        price: 150.0,
+        description: "A tray of everything. puff-puff, samosa, spring-roll, and peppered meat.",
+        price: 1000.0,
         image: "./images/side-tray.jpg",
       },
     ],
