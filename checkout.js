@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name: "Plain Rice",
         description: "well cooked floffy rice.",
         price: 100.0,
-        image: "./images/plain-rice.jpg",
+        image: "./images/white-rice.jpg",
       },
     ],
     beans: [
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name: "Chicken Curry",
         description: "Tender chicken pieces simmered in a fragrant blend of turmeric, ginger, garlic, and rich coconut milk for a creamy, aromatic dish.",
         price: 600.0,
-        image: "./images/chicken-sauce.jpg",
+        image: "./images/chicken-curry.jpg",
       },
     ],
     swallow: [
